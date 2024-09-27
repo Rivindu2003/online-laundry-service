@@ -18,7 +18,7 @@ $stmt->bind_param("sssd", $customer_name, $product_name, $quantity, $price);
 
 // Get data from POST request
 $customer_name = $_POST['customerName'];
-$product_name = $_POST['productName'];
+$product_name = $_POST['product_name']; // Change this to get the service name
 $quantity = $_POST['quantity'];
 $price = $_POST['price'];
 
