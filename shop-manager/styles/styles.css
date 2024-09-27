@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(247, 247, 247);
+}
+
+.main-content {
+    display: flex;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #e0e0e0;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.user-info {
+    text-align: center;
+}
+
+.user-avatar {
+    width: 80px;
+    height: auto;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.sidebar nav ul li {
+    margin: 15px 0;
+}
+
+.sidebar nav ul li a {
+    text-decoration: none;
+    color:rgb(61, 61, 61);
+    font-weight: bold;
+}
+
+.dashboard {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+}
+
+.stat-box {
+    width: 23%;
+    background-color: #fff;
+    padding: 15px;
+    box-shadow: 0 0 10px #585858;
+    text-align:center;
+}
+
+.stat-box p {
+    margin-bottom: 10px;
+}
+
+.stat-box .value {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.stat-box-revenue .value {
+    font-size: 28px;
+    color: #333;
+}
+
+
+.quick-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .quick-actions button {
+    width: 23%;
+    padding: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .quick-actions button:hover {
+    background-color: #0056b3;
+  }
+
+  /* Create Order Button */
+
+  /* Modal Container */
+  
+#create-order-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px; /* Set a fixed width */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Ensure the modal is on top */
+    padding: 20px;
+    display: none; /* Initially hidden */
+}
+
+/* Modal Header */
+#create-order-modal h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Form Elements */
+#orderForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#orderForm label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+#orderForm input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Button Styles */
+#orderForm button {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#orderForm button[type="submit"] {
+    background-color: #007bff; /* Primary button color */
+    color: white;
+}
+
+#orderForm button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+#orderForm button[type="button"] {
+    background-color: #f44336; /* Cancel button color */
+    color: white;
+}
+
+#orderForm button[type="button"]:hover {
+    background-color: #d32f2f; /* Darker shade on hover */
+}
