@@ -170,3 +170,82 @@ body {
 #orderForm button[type="button"]:hover {
     background-color: #d32f2f; /* Darker shade on hover */
 }
+
+/* Styling the recent orders section */
+
+.recent-orders {
+    width: 100%;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.recent-orders h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: left;
+}
+
+/* Styling the table */
+.recent-orders table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.recent-orders table th, .recent-orders table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.recent-orders table th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.recent-orders table td {
+    color: #333;
+    font-size: 0.95rem;
+}
+
+/* Zebra striping for rows */
+.recent-orders table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Hover effect for rows */
+.recent-orders table tr:hover {
+    background-color: #e9f7ff;
+}
+
+/* Style for the status column */
+.recent-orders table td:nth-child(3) {
+    font-weight: bold;
+}
+
+/* Specific status colors */
+.recent-orders table td:nth-child(3).New {
+    color: #28a745; /* Green for New */
+}
+
+.recent-orders table td:nth-child(3).In-progress {
+    color: #ffc107; /* Yellow for In-progress */
+}
+
+.recent-orders table td:nth-child(3).Delivered {
+    color: #17a2b8; /* Blue for Delivered */
+}
+
+/* Responsive table */
+@media (max-width: 768px) {
+    .recent-orders table th, .recent-orders table td {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+}

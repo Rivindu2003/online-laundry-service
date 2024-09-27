@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       const formData = new FormData(this);
 
-      fetch('http://localhost/iwt-project/shop-manager/create_order.php', {
+      fetch('http://localhost/iwt-project/online-laundry-service/shop-manager/create_order.php', {
           method: 'POST',
           body: formData
       })

@@ -60,6 +60,34 @@
                 <button>View Reports</button>
             </div>
 
+            <div class="recent-orders">
+                <h2>Recent Orders</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Use PHP/JS to fetch recent order data -->
+                        <tr>
+                            <td>#1023</td>
+                            <td>John Doe</td>
+                            <td>New</td>
+                            <td>25-Sep-2024</td>
+                            <td>LKR 12,500</td>
+                        </tr>
+                        <!-- Repeat for other recent orders -->
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+
             <div id="create-order-modal" style="display:none;">
                 <h2>Create a New Order</h2>
                 <form id="orderForm">
@@ -81,7 +109,6 @@
             </div>
 
         </section>
-    </div>
 
     <script src="js/scripts.js"></script>
     <script src="js/order.js"></script>
