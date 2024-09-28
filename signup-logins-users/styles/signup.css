@@ -71,3 +71,61 @@ body {
         padding: 20px;
     }
 }
+
+#password-conditions {
+    list-style-type: none; 
+    padding: 0; 
+}
+
+.condition {
+    margin: 5px 0; 
+}
+
+.signup-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.pass-field {
+    position: relative;
+}
+
+.pass-field input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.pass-field i {
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    cursor: pointer;
+}
+
+.requirement-list {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove default padding */
+}
+
+.requirement-list li {
+    margin: 5px 0; /* Add some space between conditions */
+}
+
+.requirement-list li.valid {
+    color: green; /* Green color for valid requirements */
+}
+
+.requirement-list li i {
+    margin-right: 5px; /* Space between icon and text */
+    color: red; /* Default red for icons */
+}
+
+.requirement-list li.valid i {
+    color: green; /* Change icon color to green when valid */
+}
+
