@@ -41,8 +41,8 @@ if ($result->num_rows > 0) {
         <div class="profile">
             <img src="https://via.placeholder.com/150" alt="User Avatar">
             <h2><?php echo htmlspecialchars($user['username']); ?></h2>
-            <p>Full Stack Developer</p>
-            <p>Bay Area, San Francisco, CA</p>
+            <p>Welcome to BubbleShine</p>
+            <p>Contact us at bubbleshine@gmail.com</p>
         </div>
 
         <!-- User Details Section -->
