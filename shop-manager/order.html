@@ -4,26 +4,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Details</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="styles/orders.css">
 </head>
+
 <body>
+    
     <div class="container">
-        <h1>Order Details</h1>
-        <table id="orders-table">
-            <thead>
-                <tr>
-                    <th>Customer Name</th>
-                    <th>Status</th>
-                    <th>Order Date</th>
-                    <th>Total</th>
-                </tr>
-            </thead>
-            <tbody id="order-body">
-                <!-- Order rows will be populated here by JavaScript -->
-            </tbody>
-        </table>
+        <div id="sidebar-container">
+            <aside class="sidebar">
+                <div class="user-info">
+                    <img src="images/profile-user.png" alt="user profile" class="user-avatar">
+                    <p>Welcome: Rivindu Rathnayake</p>
+                    <p id="system-time">Time: 00:20:42</p>
+                    <a href="#">Visit Home Page</a>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="#">Orders</a></li>
+                        <li><a href="#">Manage Users</a></li>
+                        <li><a href="#">Inventory</a></li>
+                        <li><a href="#">Tracking Wizard</a></li>
+                        <li><a href="#">Logout</a></li>
+                    </ul>
+                </nav>
+            </aside>
+        </div>
+        <div class="main-content"> <!-- New div for main content -->
+            <h1>Order Details</h1>
+            <table id="orders-table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer Name</th>
+                        <th>Status</th>
+                        <th>Order Date</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="order-body">
+                    <!-- Order rows will be populated here by JavaScript -->
+                </tbody>
+            </table>
+        </div>
     </div>
 
+    <!-- Modal Structure -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Order Details</h2>
+            <form id="orderForm">
+                <input type="hidden" id="orderId" name="orderId">
+    
+                <!-- Customer Name -->
+                <div class="form-group">
+                    <label for="customerName">Customer Name:</label>
+                    <input type="text" id="customerName" name="customerName" required>
+                </div>
+    
+                <!-- Phone Number -->
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="text" id="phoneNumber" name="phoneNumber" required>
+                </div>
+    
+                <!-- Address -->
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+    
+                <!-- Order Status -->
+                <div class="form-group">
+                    <label for="orderStatus">Order Status:</label>
+                    <select id="orderStatus" name="orderStatus" required>
+                        <option value="Completed">Completed</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Canceled">Canceled</option>
+                        <option value="Shipped">Shipped</option>
+                    </select>
+                </div>
+    
+                <!-- Submit Button -->
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+    
+
     <script src="js/manage_order.js"></script>
+    <script src="js/load_time.js"></script>
 </body>
 </html>

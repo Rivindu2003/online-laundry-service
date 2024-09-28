@@ -13,30 +13,53 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch order details from the orders table
+
 $sql = "SELECT * FROM orders";
 $result = $conn->query($sql);
 
-$total = 0; // Initialize total
+$total = 0;
 
-// Check if there are results
-if ($result->num_rows > 0) {
-    // Output data of each row
-    while ($row = $result->fetch_assoc()) {
-        $orderTotal = $row['quantity'] * $row['price']; // Calculate order total
-        $total += $orderTotal; // Add to the overall total
+if ($result) {
+    while ($order = mysqli_fetch_assoc($result)) {
+        // Determine the button class based on the status
+        $buttonClass = '';
+        switch ($order['status']) {
+            case 'Completed':
+                $buttonClass = 'btn-success';
+                break;
+            case 'Pending':
+                $buttonClass = 'btn-warning';
+                break;
+            case 'Canceled':
+                $buttonClass = 'btn-danger';
+                break;
+            case 'Shipped':
+                $buttonClass = 'btn-info';
+                break;
+            default:
+                $buttonClass = 'btn-secondary'; // Fallback for unknown status
+        }
 
-        echo "<tr>
-                <td>" . htmlspecialchars($row['customer_name']) . "</td>
-                <td>" . htmlspecialchars($row['status']) . "</td>
-                <td>" . htmlspecialchars($row['order_date']) . "</td>
-                <td>" . htmlspecialchars(number_format($orderTotal, 2)) . "</td> <!-- Display individual order total -->
-              </tr>";
+        $total  = $order['quantity'] * $order['price'];  // Add to the overall total
+
+        // Output the table row with the button
+        echo '<tr>
+                <td>#000' . htmlspecialchars($order['id']) . '</td>
+                <td>' . htmlspecialchars($order['customer_name']) . '</td>
+                <td><button class="btn ' . $buttonClass . '">' . htmlspecialchars($order['status']) . '</button></td>
+                <td>' . htmlspecialchars($order['order_date']) . '</td>
+                <td>' . htmlspecialchars(number_format($total, 2)) . '</td>
+                <td>
+                    <a href="#" class="btn btn-light eye-icon" data-id="' . $order['id'] . '">
+                <i class="fas fa-eye"></i>
+            </a>
+                </td>
+              </tr>';
     }
 } else {
-    echo "<tr><td colspan='6'>No orders found.</td></tr>";
+    echo '<tr><td colspan="4">No orders found.</td></tr>';
 }
 
-// Close the connection
+// Close the database connection if applicable
 $conn->close();
 ?>
