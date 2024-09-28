@@ -129,11 +129,33 @@
 
         </section>
 
+        <div id="popupOverlay" style="display:none;"></div>
+        <div id="manageOrdersPopup" style="display:none;">
+            <h2>Manage Customers Orders</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer Name</th>
+                        <th>Service</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="ordersTableBody">
+                    <!-- Orders will be inserted here by JavaScript -->
+                </tbody>
+            </table>
+            <button onclick="closeManageOrdersPopup()">Close</button>
+        </div>
+        
+
     <script src="js/load_time.js"></script>
-    <script src="js/load-sidebar.js"></script>
     <script src="js/order.js"></script>
     <script src="js/recent-orders.js"></script>
     <script src="js/services.js"></script>
     <script src="js/create_service.js"></script>
+    <script src="js/manage_order.js"></script>
 </body>
 </html>
