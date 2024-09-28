@@ -19,8 +19,11 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.json()) // Expecting JSON response from server
             .then(data => {
                 if (data.success) {
-                    // Display success message (optional: you can use SweetAlert)
-                    alert('Service created successfully!');
+                    Swal.fire({
+                        title: "Service Created!",
+                        text: data.message,
+                        icon: "success"
+                    });
                     document.getElementById('create-service-modal').style.display = 'none'; // Hide the modal
                     this.reset(); // Reset the form fields
                 } else {
