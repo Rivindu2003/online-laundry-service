@@ -6,8 +6,6 @@ function fetchRecentOrders() {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', 'fetch_orders.php', true);
 
-    
-
     xhr.onload = function () {
         if (this.status === 200) {
             const orders = JSON.parse(this.responseText);
@@ -28,8 +26,13 @@ function fetchRecentOrders() {
                 `;
             });
 
-            // Insert rows into the table body
-            document.getElementById('order-table-body').innerHTML = output;
+            // Ensure the target element exists before setting innerHTML
+            const tableBody = document.getElementById('order-table-body');
+            if (tableBody) {
+                tableBody.innerHTML = output;
+            } else {
+                console.error('Element with id "order-table-body" not found.');
+            }
         }
     }
 

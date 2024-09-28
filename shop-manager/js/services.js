@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function() {
     // Fetch services and populate the dropdown
-    fetch('path_to_your_php_file.php')
+    fetch('fetch_services.php')
     .then(response => response.json())
     .then(services => {
         const productNameSelect = document.getElementById('productName');
