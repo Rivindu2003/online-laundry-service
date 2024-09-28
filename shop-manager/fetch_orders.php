@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 }
 
 // Fetch recent 5 orders
-$sql = "SELECT LPAD(id, 5, '0') AS id, customer_name, product_name, quantity, price, order_date 
+$sql = "SELECT LPAD(id, 5, '0') AS id, customer_name, product_name, quantity, price, order_date, status
         FROM orders 
         ORDER BY order_date DESC 
         LIMIT 5";

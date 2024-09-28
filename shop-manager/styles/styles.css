@@ -146,6 +146,8 @@ body {
 /* Button Styles */
 #orderForm button {
     padding: 10px;
+    padding: 10px 15px;
+    margin-top: 10px;
     font-size: 16px;
     border: none;
     border-radius: 4px;
@@ -249,3 +251,84 @@ body {
         font-size: 0.85rem;
     }
 }
+
+#create-service-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    z-index: 1000;
+}
+
+#create-service-modal h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+}
+
+#create-service-modal label {
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+#create-service-modal input[type="text"],
+#create-service-modal input[type="number"],
+#create-service-modal textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+}
+
+#create-service-modal button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    font-family: 'Arial', sans-serif;
+}
+
+#create-service-modal button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+#create-service-modal button[type="button"] {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    font-family: 'Arial', sans-serif;
+    margin-top: 10px;
+}
+
+#create-service-modal button[type="button"]:hover {
+    background-color: #c82333;
+}
+
+#create-service-modal form {
+    display: flex;
+    flex-direction: column;
+}
+

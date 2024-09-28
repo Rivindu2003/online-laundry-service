@@ -30,7 +30,11 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.json())
         .then(data => {
-            alert(data.message); // Show success or error message
+            Swal.fire({
+                title: "Order Created!",
+                text: data.message,
+                icon: "success"
+            });
             document.getElementById('create-order-modal').style.display = 'none'; // Hide the modal
             document.getElementById('orderForm').reset(); // Reset the form
             document.getElementById('selectedServiceText').textContent = 'Selected Service: None'; // Reset selected service text

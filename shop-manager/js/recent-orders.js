@@ -14,12 +14,28 @@ function fetchRecentOrders() {
             // Loop through the orders and create table rows
             orders.forEach(function(order) {
                 let orderTotal = order.quantity * order.price;
+                
+                let buttonClass;
+                switch (order.status) {
+                    case 'Pending':
+                        buttonClass = 'btn-primary';
+                        break;
+                    case 'processing':
+                        buttonClass = 'btn-info';
+                        break;
+                    case 'completed':
+                        buttonClass = 'btn-success';
+                        break;
+                    default:
+                        buttonClass = 'btn-secondary'; // Fallback class for any unexpected status
+                }
+                
                 output += `
                     <tr>
                         <td>${order.id}</td>
                         <td>${order.customer_name}</td>
                         <td>${order.product_name}</td>
-                        <td>${order.status}</td>
+                        <td><button type="button" class="btn ${buttonClass}">${order.status}</button></td>
                         <td>${order.order_date}</td>
                         <td>LKR ${orderTotal}</td>
                     </tr>
