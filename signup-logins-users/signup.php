@@ -2,6 +2,8 @@
 // Database connection
 include 'db.php'; 
 
+$successMessage = ""; // Variable to hold success message
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $email = $_POST['email'];
@@ -10,13 +12,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO users (username, password, email) VALUES ('$username', '$password', '$email')";
 
     if (mysqli_query($connection, $sql)) {
-        echo "Signup successful!";
+        // Set success message
+        $successMessage = "Signup successful!";
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($connection);
     }
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Sign Up</title>
     <link rel="stylesheet" href="styles/signup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
@@ -35,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="email" name="email" placeholder="Email" required>
         
         <div class="pass-field">
-        <input type="password" name="password" id="password" placeholder="Password" required>
+            <input type="password" name="password" id="password" placeholder="Password" required>
             <i class="fa-solid fa-eye"></i>
         </div>
 
@@ -56,8 +61,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 </div>
 
+<?php
+if ($successMessage) {
+    // Use echo to add the script after the body has loaded
+    echo "<script>
+            window.onload = function() {
+                swal.fire({
+                    title: 'Success!',
+                    text: '$successMessage',
+                    icon: 'success',
+                    button: 'OK',
+                }).then(() => {
+                    window.location.href = 'login.php'; // Redirect after alert
+                });
+            };
+          </script>";
+}
+?>
+
 <script src="js/signup.js"></script>
 </body>
 </html>
-
-
