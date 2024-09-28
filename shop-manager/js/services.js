@@ -49,29 +49,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const quantity = parseInt(quantityInput.value) || 0;
         const price = parseFloat(priceInput.value) || 0;
         const total = quantity * price;
-        totalPriceElement.textContent = `Total Price: LKR${total.toFixed(2)}`;
+        totalPriceElement.textContent = `Total Price: LKR ${total.toFixed(2)}`;
     }
-});
-
-//--------------------------------------------------
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Fetch services and populate the dropdown
-    fetch('fetch_services.php')
-    .then(response => response.json())
-    .then(services => {
-        const productNameSelect = document.getElementById('productName');
-        
-        // Clear existing options
-        productNameSelect.innerHTML = '<option value="" disabled selected>Select a product</option>';
-
-        // Loop through services and create new option elements
-        services.forEach(service => {
-            const option = document.createElement('option');
-            option.value = service.id; // Set the value to service_id
-            option.textContent = service.name; // Set the displayed text to service_name
-            productNameSelect.appendChild(option); // Append the option to the select element
-        });
-    })
-    .catch(error => console.error('Error fetching services:', error));
 });

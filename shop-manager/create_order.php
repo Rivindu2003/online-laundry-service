@@ -1,8 +1,8 @@
 <?php
-$servername = "localhost"; // Your database server
-$username = "rivindu"; // Your database username
-$password = "Rivindu@1234"; // Your database password
-$dbname = "shop_management"; // Your database name
+$servername = "localhost";
+$username = "rivindu";
+$password = "Rivindu@1234";
+$dbname = "shop_management";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -18,7 +18,7 @@ $stmt->bind_param("sssd", $customer_name, $product_name, $quantity, $price);
 
 // Get data from POST request
 $customer_name = $_POST['customerName'];
-$product_name = $_POST['product_name']; // Change this to get the service name
+$product_name = $_POST['productName']; // This is now the service name
 $quantity = $_POST['quantity'];
 $price = $_POST['price'];
 
