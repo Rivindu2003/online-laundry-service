@@ -32,43 +32,18 @@ if ($result->num_rows > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
-    <link rel="stylesheet" href="styles/user-profile.css">
-    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/header-footer-sidebar.css">
+    <link rel="stylesheet" href="styles/user-details.css">
+    <link rel="stylesheet" href="styles/position.css">
 </head>
 <body>
-    <header class="header">
-        <img src="images/logo-white.png" alt="logo">
-        <nav class="navbar">
-            <a href="#">Home</a>
-            <a href="#">Our Services</a>
-            <a href="#">About us</a>
-            <a href="#">Contact us</a>
-            <a id="login" href="logout.php">
-                <img id="login-image" src="images/logout.png">
-                Logout
-            </a>
-        </nav>
-    </header>
+   <?php $IPATH = "assets/"; include($IPATH."header.html"); ?>
     <!-- User Details Section -->
+    <?php $IPATH = "assets/"; include($IPATH."sidebar.html"); ?>
+    
     <div class="container">
         <!-- User Image and Info -->
-        <aside class="sidebar">
-            <div class="user-info">
-                <p id="userName_sidebar"><?php echo htmlspecialchars('username : ' . $user['username']); ?></p>
-                <p id="email_sidebar"><?php echo htmlspecialchars($user['email']); ?></p>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="#">Orders</a></li>
-                    <li><a href="#">Downloads</a></li>
-                    <li><a href="#">Addresses</a></li>
-                    <li><a href="#">Account Details</a></li>
-                    <li><a href="logout.php">Logout</a></li>
-                </ul>
-            </nav>
-        </aside>
-        
+       
         <div class="profile">
             <img src="images\avatar.png" alt="User Avatar">
             <h2><?php echo htmlspecialchars($user['username']); ?></h2>
@@ -106,25 +81,8 @@ if ($result->num_rows > 0) {
             </form>
         </div>
     </div>
-    <footer>
-    <div class="footerContainer">
-
-        <center><img src="images/logo-white.png"></center>
-
-        <div class="footerNav">
-            <ul><li><a href="">Home</a></li>
-                <li><a href="">Our Services</a></li>
-                <li><a href="">About US</a></li>
-                <li><a href="">Contact Us</a></li>
-                <li><a href="">Login / Signup</a></li>
-            </ul>
-        </div>
-        
-    </div>
-    <div class="footerBottom">
-        <p>Copyright &copy;2024; Designed by <span class="designer">Group 1.1 Team</span></p>
-    </div>
-    </footer>
+    <?php $IPATH = "assets/"; include($IPATH."footer.html"); ?>
+   
     <script src="js/user_details.js"></script>
 </body>
 </html>
