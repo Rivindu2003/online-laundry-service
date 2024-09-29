@@ -35,11 +35,29 @@ if ($result->num_rows > 0) {
     <link rel="stylesheet" href="styles/user-profile.css">
 </head>
 <body>
-        <!-- User Details Section -->
-        <div class="container">
+    <!-- User Details Section -->
+    <div class="container">
         <!-- User Image and Info -->
+        <aside class="sidebar">
+            <div class="user-info">
+                <div class="user-avatar"></div>
+                <p>rivindu.rathnayake</p>
+                <p>rivindu.rathnayake@icloud.com</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Orders</a></li>
+                    <li><a href="#">Downloads</a></li>
+                    <li><a href="#">Addresses</a></li>
+                    <li><a href="#">Account Details</a></li>
+                    <li><a href="logout.php">Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+        
         <div class="profile">
-            <img src="https://via.placeholder.com/150" alt="User Avatar">
+            <img src="images\avatar.png" alt="User Avatar">
             <h2><?php echo htmlspecialchars($user['username']); ?></h2>
             <p>Welcome to BubbleShine</p>
             <p>Contact us at bubbleshine@gmail.com</p>
@@ -79,3 +97,4 @@ if ($result->num_rows > 0) {
     <script src="js/user_details.js"></script>
 </body>
 </html>
+

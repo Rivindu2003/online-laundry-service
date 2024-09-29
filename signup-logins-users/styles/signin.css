@@ -11,7 +11,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
+    background: linear-gradient(to bottom, #4dd0e1, #b2fbd1);
 }
 
 /* Form Container */
@@ -63,6 +63,20 @@ body {
 
 .login-container button:hover {
     background-color: #0056b3;
+}
+
+p {
+    text-align: center;
+    padding-top: 15px;
+}
+
+a {
+    color: #0600c2;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 /* Responsive Media Query */
