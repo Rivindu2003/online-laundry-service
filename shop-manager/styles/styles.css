@@ -1,0 +1,398 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(247, 247, 247);
+}
+
+.main-content {
+    display: flex;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #e0e0e0;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.user-info {
+    text-align: center;
+}
+
+.user-avatar {
+    width: 80px;
+    height: auto;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.sidebar nav ul li {
+    margin: 15px 0;
+}
+
+.sidebar nav ul li a {
+    text-decoration: none;
+    color:rgb(61, 61, 61);
+    font-weight: bold;
+}
+
+.dashboard {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+}
+
+.stat-box {
+    width: 23%;
+    background-color: #fff;
+    padding: 15px;
+    box-shadow: 0 0 10px #585858;
+    text-align:center;
+}
+
+.stat-box p {
+    margin-bottom: 10px;
+}
+
+.stat-box .value {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.stat-box-revenue .value {
+    font-size: 28px;
+    color: #333;
+}
+
+
+.quick-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .quick-actions button {
+    width: 23%;
+    padding: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .quick-actions button:hover {
+    background-color: #0056b3;
+  }
+
+  /* Create Order Button */
+
+  /* Modal Container */
+  
+#create-order-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px; /* Set a fixed width */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Ensure the modal is on top */
+    padding: 20px;
+    display: none; /* Initially hidden */
+}
+
+/* Modal Header */
+#create-order-modal h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Form Elements */
+#orderForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#orderForm label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+#orderForm input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Button Styles */
+#orderForm button {
+    padding: 10px;
+    padding: 10px 15px;
+    margin-top: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#orderForm button[type="submit"] {
+    background-color: #007bff; /* Primary button color */
+    color: white;
+}
+
+#orderForm button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+#orderForm button[type="button"] {
+    background-color: #f44336; /* Cancel button color */
+    color: white;
+}
+
+#orderForm button[type="button"]:hover {
+    background-color: #d32f2f; /* Darker shade on hover */
+}
+
+/* Styling the recent orders section */
+
+.recent-orders {
+    width: 100%;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.recent-orders h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: left;
+}
+
+/* Styling the table */
+.recent-orders table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.recent-orders table th, .recent-orders table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.recent-orders table th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.recent-orders table td {
+    color: #333;
+    font-size: 0.95rem;
+}
+
+/* Zebra striping for rows */
+.recent-orders table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Hover effect for rows */
+.recent-orders table tr:hover {
+    background-color: #e9f7ff;
+}
+
+/* Style for the status column */
+.recent-orders table td:nth-child(4) {
+    font-weight: bold;
+}
+
+/* Specific status colors */
+.recent-orders table td:nth-child(3).New {
+    color: #28a745; /* Green for New */
+}
+
+.recent-orders table td:nth-child(3).In-progress {
+    color: #ffc107; /* Yellow for In-progress */
+}
+
+.recent-orders table td:nth-child(3).Delivered {
+    color: #17a2b8; /* Blue for Delivered */
+}
+
+/* Responsive table */
+@media (max-width: 768px) {
+    .recent-orders table th, .recent-orders table td {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+}
+
+#create-service-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    z-index: 1000;
+}
+
+#create-service-modal h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+}
+
+#create-service-modal label {
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+#create-service-modal input[type="text"],
+#create-service-modal input[type="number"],
+#create-service-modal textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+}
+
+#create-service-modal button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    font-family: 'Arial', sans-serif;
+}
+
+#create-service-modal button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+#create-service-modal button[type="button"] {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    font-family: 'Arial', sans-serif;
+    margin-top: 10px;
+}
+
+#create-service-modal button[type="button"]:hover {
+    background-color: #c82333;
+}
+
+#create-service-modal form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Overlay styles */
+#popupOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Dark background with transparency */
+    z-index: 999; /* Ensure it is above other content */
+    display: none; /* Initially hidden */
+}
+
+/* Popup styles */
+#manageOrdersPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the popup */
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Above the overlay */
+    padding: 20px; /* Inner padding */
+    width: 80%; /* Width of the popup */
+    max-width: 600px; /* Max width */
+    overflow: auto; /* Scroll if content is too large */
+}
+
+/* Popup title styles */
+#manageOrdersPopup h2 {
+    margin: 0 0 15px; /* Margin below title */
+}
+
+/* Table styles */
+#manageOrdersPopup table {
+    width: 100%; /* Full width */
+    border-collapse: collapse; /* Collapse borders */
+    margin-bottom: 15px; /* Margin below the table */
+}
+
+#manageOrdersPopup th, #manageOrdersPopup td {
+    padding: 10px; /* Padding in cells */
+    text-align: left; /* Left align text */
+    border: 1px solid #ddd; /* Light gray border */
+}
+
+#manageOrdersPopup th {
+    background-color: #f2f2f2; /* Light gray background for headers */
+}
+
+/* Close button styles */
+#manageOrdersPopup button {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    padding: 10px 15px; /* Padding */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+#manageOrdersPopup button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
