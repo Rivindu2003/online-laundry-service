@@ -1,6 +1,7 @@
 const passwordInput = document.querySelector("#password");
 const eyeIcon = document.querySelector(".pass-field i");
 const requirementList = document.querySelectorAll("#password-conditions li");
+const signupForm = document.querySelector("form"); // Get the form element
 
 // An array of password requirements with corresponding regular expressions and index of the requirement list item
 const requirements = [
@@ -29,10 +30,24 @@ passwordInput.addEventListener("keyup", (e) => {
     });
 });
 
+// Toggle password visibility
 eyeIcon.addEventListener("click", () => {
-    // Toggle the password input type between "password" and "text"
     passwordInput.type = passwordInput.type === "password" ? "text" : "password";
-
-    // Update the eye icon class based on the password input type
     eyeIcon.className = `fa-solid fa-eye${passwordInput.type === "password" ? "" : "-slash"}`;
+});
+
+// Form submission validation
+signupForm.addEventListener("submit", (e) => {
+    let allValid = true; // Variable to track overall validity
+    requirements.forEach(item => {
+        const isValid = item.regex.test(passwordInput.value);
+        if (!isValid) {
+            allValid = false; // If any requirement is not met, set allValid to false
+        }
+    });
+
+    if (!allValid) {
+        e.preventDefault(); // Prevent form submission
+        alert("Please ensure all password conditions are met."); // Alert message
+    }
 });

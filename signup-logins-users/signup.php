@@ -3,22 +3,40 @@
 include 'db.php'; 
 
 $successMessage = ""; // Variable to hold success message
+$errorMessage_email = "";
+$errorMessage_username = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-    $sql = "INSERT INTO users (username, password, email) VALUES ('$username', '$password', '$email')";
+    // Check if email - username already exists
+    $checkEmail = "SELECT * FROM users WHERE email = '$email'";
+    $checUsername = "SELECT * FROM users WHERE username = '$username'";
+    $result_email = mysqli_query($connection, $checkEmail);
+    $result_username = mysqli_query($connection, $checUsername);
 
-    if (mysqli_query($connection, $sql)) {
-        // Set success message
-        $successMessage = "Signup successful!";
+    if (mysqli_num_rows($result_email) > 0) {
+        // Email already taken
+        $errorMessage_email = "This email is already taken. Please try another.";
+    } elseif(mysqli_num_rows($result_username) > 0){
+        $errorMessage_username = "This username is already taken. Please try another.";
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($connection);
+        // Prepare the insert statement
+        $sql = "INSERT INTO users (username, password, email) VALUES ('$username', '$password', '$email')";
+        
+        if (mysqli_query($connection, $sql)) {
+            // Set success message
+            $successMessage = "Signup successful!";
+        } else {
+            // Error handling for insert failure
+            $errorMessage = "Error: " . mysqli_error($connection);
+        }
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -73,6 +91,33 @@ if ($successMessage) {
                     button: 'OK',
                 }).then(() => {
                     window.location.href = 'login.php'; // Redirect after alert
+                });
+            };
+          </script>";
+}elseif ($errorMessage_email){
+    echo "<script>
+            window.onload = function() {
+                swal.fire({
+                    title: 'Error!',
+                    text: '$errorMessage_email',
+                    icon: 'error',
+                    button: 'OK',
+                }).then(() => {
+                    window.location.href = 'signup.php'; // Redirect after alert
+                });
+            };
+          </script>";
+}
+elseif ($errorMessage_username){
+    echo "<script>
+            window.onload = function() {
+                swal.fire({
+                    title: 'Error!',
+                    text: '$errorMessage_username',
+                    icon: 'error',
+                    button: 'OK',
+                }).then(() => {
+                    window.location.href = 'signup.php'; // Redirect after alert
                 });
             };
           </script>";
