@@ -1,58 +1,101 @@
-<?php
-// Assuming you're connected to a database
-include '../signup-logins-users/db.php'; 
-session_start(); // For user authentication
-
-// Function to fetch reviews
-function fetchReviews($limit = 4) {
-    // Database connection (assuming $conn is the mysqli connection)
-    global $connection;
-
-    // Query to retrieve reviews (you may need to adjust the table and column names)
-    $query = "SELECT user_name, review FROM reviews ORDER BY review_date DESC LIMIT ?";
-    $stmt = $connection->prepare($query);
-    $stmt->bind_param('i', $limit);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    $reviews = [];
-    while ($row = $result->fetch_assoc()) {
-        $reviews[] = $row;
-    }
-    return $reviews;
-}
-
-// Check if user is logged in
-$loggedIn = isset($_SESSION['user_id']);
-$reviews = fetchReviews();
+<?php 
+    session_start();
 ?>
 
-<!DOCTYPE html>
+<!--doctype html-->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reviews</title>
+    <title>Testimonial HTML</title>
+    <!--Stylesheet-->
+    <link rel="stylesheet" href="styles/body.css"/>
+    <!--Fav-icon-->
+    <link rel="shortcut icon" href="images/fav-icon.png"/>
+    <!--Poppins Font-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap" rel="stylesheet">
+    <!--Font Awesome-->
+    <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
+    <!-- SweetAlert -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    
+    <script>
+        // Check if the user is logged in via PHP session
+        const loggedIn = <?php echo isset($_SESSION['username']) ? 'true' : 'false'; ?>;
+        const currentUserId = <?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 'null'; ?>;
+    </script>
+    <link rel="stylesheet" href="../signup-logins-users/styles/header-footer-sidebar.css">
 </head>
 <body>
-<div class="review-container">
-        <h2>Customer Reviews</h2>
+    <!--Testimonials Section-->
+    <?php $IPATH = "../signup-logins-users/assets/"; include($IPATH."header.html"); ?>
 
-        <div id="reviews">
-            <?php foreach ($reviews as $review) : ?>
-                <div class="review">
-                    <h4><?php echo htmlspecialchars($review['user_name']); ?></h4>
-                    <p><?php echo htmlspecialchars($review['review']); ?></p>
-                </div>
-            <?php endforeach; ?>
+    <section id="testimonials">
+        <div class="testimonial-heading">
+            <h1>What Our Clients Say</h1>
         </div>
+        <div class="testimonial-box-container" id="review-container">
+            <!-- Reviews will be injected here dynamically -->
+        </div>
+        <button id="writeReviewBtn">Write Your Review</button>
+    </section>
 
-        <button id="loadMoreBtn">Load More Reviews</button>
+    <?php $IPATH = "../signup-logins-users/assets/"; include($IPATH."footer.html"); ?>
 
-        <?php if ($loggedIn): ?>
-            <a href="create_review.php" class="create-review-btn">Create Your Review</a>
-        <?php endif; ?>
-    </div>
-    <script src="js/reviews.js"></script>
+    <script>
+        // Fetch reviews from the database using AJAX
+        function fetchReviews() {
+            fetch('fetch_reviews.php') // Replace with your PHP script
+                .then(response => response.json())
+                .then(data => {
+                    const reviewContainer = document.getElementById('review-container');
+                    reviewContainer.innerHTML = ''; // Clear previous reviews
+
+                    data.forEach(review => {
+                        reviewContainer.innerHTML += `
+                            <div class="testimonial-box">
+                                <div class="box-top">
+                                    <div class="profile">
+                                        <div class="profile-img">
+                                            <img src="images/profile-user.png" alt="Profile Image"/>
+                                        </div>
+                                        <div class="name-user">
+                                            <strong>${review.user_name}</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="client-comment">
+                                    <p>${review.review}</p>
+                                </div>
+                                <div class="review-date">${review.review_date}</div>
+                            </div>
+                        `;
+                    });
+                })
+                .catch(error => console.error('Error fetching reviews:', error));
+        }
+
+        // Event listener for the Write Your Review button
+        document.getElementById('writeReviewBtn').addEventListener('click', () => {
+            if (loggedIn) {
+                window.location.href = 'write_review.php'; // Redirect to the review writing page
+            } else {
+                swal({
+                    title: "Error!",
+                    text: "Please log in to write a review.",
+                    type: "error",
+                    confirmButtonText: "Login",
+                    closeOnConfirm: false
+                }, function() {
+                    window.location.href = '../signup-logins-users/login.php'; // Redirect to login page
+                });
+            }
+        });
+
+        // Fetch reviews on page load
+        document.addEventListener('DOMContentLoaded', fetchReviews);
+    </script>
 </body>
 </html>

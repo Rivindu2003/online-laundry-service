@@ -1,0 +1,67 @@
+/* Reset some default styles */
+body {
+    font-family: 'Poppins', sans-serif; /* Ensure you have the Poppins font loaded */
+    background-color: #f9f9f9; /* Light background color */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height */
+}
+
+/* Form Container */
+.form-container {
+    background-color: #fff; /* White background for the form */
+    padding: 20px; /* Padding inside the form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 90%; /* Responsive width */
+    max-width: 400px; /* Max width for larger screens */
+    text-align: center; /* Center align text */
+}
+
+/* Heading Styles */
+h1 {
+    color: #333; /* Darker text color */
+    margin-bottom: 20px; /* Spacing below the heading */
+}
+
+/* Form Styles */
+form {
+    display: flex; /* Flexbox for layout */
+    flex-direction: column; /* Column direction for children */
+}
+
+/* Input Styles */
+input[type="text"],
+textarea {
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 4px; /* Rounded corners */
+    padding: 10px; /* Padding inside inputs */
+    margin-bottom: 15px; /* Spacing between inputs */
+    font-size: 16px; /* Font size */
+    transition: border-color 0.3s; /* Transition effect on focus */
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    border-color: #007BFF; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Button Styles */
+button {
+    background-color: #007BFF; /* Button color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    padding: 10px; /* Padding inside button */
+    cursor: pointer; /* Cursor on hover */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s; /* Transition effect */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker button color on hover */
+}
