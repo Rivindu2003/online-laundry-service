@@ -76,3 +76,7 @@ button#save-btn {
 button#save-btn:hover {
     background-color: #0056b3;
 }
+
+#cancel-btn {
+    background-color: red;
+}

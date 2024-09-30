@@ -50,8 +50,9 @@ $totalPrice = 0;
     <link rel="stylesheet" href="styles/view-order.css">
     <link rel="stylesheet" href="styles/header-footer-sidebar.css">
     <link rel="stylesheet" href="styles/position.css">
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+
         // Function to toggle edit fields for delivery date and address
         // Function to enable editing of the delivery address
             function enableEdit() {
@@ -85,6 +86,52 @@ $totalPrice = 0;
             })
             .catch(error => console.error('Error:', error));
         }
+
+        function cancelOrder() {
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this! this will delete order",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, cancel & Cancel it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Make an AJAX call to cancel the order
+            fetch('delete_order_customer.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    order_id: <?php echo $order_id; ?>
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire({
+                        title: "Canceled!",
+                        text: "Your order has been canceled.",
+                        icon: "success"
+                    }).then(() => {
+                        // Redirect to the user panel after cancellation
+                        window.location.href = 'user-panel.php';
+                    });
+                } else {
+                    Swal.fire({
+                        title: "Error!",
+                        text: "There was a problem canceling your order.",
+                        icon: "error"
+                    });
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    });
+}
+
     </script>
 
 </head>
@@ -96,7 +143,7 @@ $totalPrice = 0;
 
     <div class="order-container">
         <!-- Display Order ID and User Information -->
-        <h1>Order #<?php echo $order['order_id']; ?></h1>
+        <h1>Order #BB_0<?php echo $order['order_id']; ?></h1>
         <p><strong>Full Name:</strong> <?php echo $user['full_name']; ?></p>
         <p><strong>Phone Number:</strong> <?php echo $user['phone_number']; ?></p>
 
@@ -137,6 +184,10 @@ $totalPrice = 0;
             <button onclick="enableEdit()">Edit Delivery Details</button>
             <button id="save-btn" onclick="saveDetails()" style="display: none;">Save</button>
         <?php endif; ?>
+        
+        <?php if ($order['status'] == 'Pending') : ?>
+    <button id="cancel-btn" onclick="cancelOrder()">Cancel Order</button>
+    <?php endif; ?>
     </div>
 
     <?php $IPATH = "assets/"; include($IPATH."footer.html"); ?>
