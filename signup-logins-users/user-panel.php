@@ -30,42 +30,17 @@ $userInfo = $result->fetch_assoc()
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
-    <link rel="stylesheet" href="styles/header-user.css">
-    <link rel="stylesheet" href="styles/body.css">
+    <link rel="stylesheet" href="styles/header-footer-sidebar.css">
+    <link rel="stylesheet" href="styles/user-panel.css">
+    <link rel="stylesheet" href="styles/position.css">
 </head>
 <body>
-<header class="header">
-        <img src="images/logo-white.png" alt="logo">
-        <nav class="navbar">
-            <a href="#">Home</a>
-            <a href="#">Our Services</a>
-            <a href="#">About us</a>
-            <a href="#">Contact us</a>
-            <a id="login" href="logout.php">
-                <img id="login-image" src="images/logout.png">
-                Logout
-            </a>
-        </nav>
-    </header>
+
+    <?php $IPATH = "assets/"; include($IPATH."header.html"); ?>
+
+    <?php $IPATH = "assets/"; include($IPATH."sidebar.html"); ?>
 
     <div class="container">
-
-    <aside class="sidebar">
-            <div class="user-info">
-                <p id="userName_sidebar"><?php echo htmlspecialchars('username : ' . $userInfo['username']); ?></p>
-                <p id="email_sidebar"><?php echo htmlspecialchars($userInfo['email']); ?></p>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="#">Orders</a></li>
-                    <li><a href="#">Downloads</a></li>
-                    <li><a href="#">Addresses</a></li>
-                    <li><a href="#">Account Details</a></li>
-                    <li><a href="logout.php">Logout</a></li>
-                </ul>
-            </nav>
-        </aside>
 
     <h1>Overview</h1>
     
@@ -90,49 +65,17 @@ $userInfo = $result->fetch_assoc()
                     <td><?php echo number_format($row['total_amount'], 2); ?> LKR</td> <!-- Assuming 'total' is a decimal value -->
                     <td><?php echo $row['status']; ?></td> <!-- Adjust column name if necessary -->
                     <td>
-                        <button onclick="trackOrder(<?php echo $row['order_id']; ?>)">Track</button>
-                        <button onclick="reorder(<?php echo $row['order_id']; ?>)">Reorder</button>
+                        <a href="view-order.php?order_id=<?php echo $row['order_id']; ?>"><button type="button">VIEW</button></a>
                     </td>
                 </tr>
             <?php endwhile; ?>
         </tbody>
     </table>
-
-    <div class="options">
-        <h2>Schedule Your Delivery</h2>
-        <form action="schedule_delivery.php" method="POST">
-            <label for="delivery_date">Choose Delivery Date:</label>
-            <input type="date" name="delivery_date" id="delivery_date" required>
-            <input type="submit" value="Schedule">
-        </form>
-        
-        <h2>Create New Service</h2>
-        <form action="create_service.php" method="POST">
-            <label for="service_name">Service Name:</label>
-            <input type="text" name="service_name" id="service_name" required>
-            <input type="submit" value="Create">
-        </form>
+    <div class="createOrder">
+        <a href="create_order_customer.php"><button type="button">Create Order</button></a>
     </div>
 </div>
+    <?php $IPATH = "assets/"; include($IPATH."footer.html"); ?>
 
-    <footer>
-    <div class="footerContainer">
-
-        <center><img src="images/logo-white.png"></center>
-
-        <div class="footerNav">
-            <ul><li><a href="">Home</a></li>
-                <li><a href="">Our Services</a></li>
-                <li><a href="">About US</a></li>
-                <li><a href="">Contact Us</a></li>
-                <li><a href="">Login / Signup</a></li>
-            </ul>
-        </div>
-        
-    </div>
-    <div class="footerBottom">
-        <p>Copyright &copy;2024; Designed by <span class="designer">Group 1.1 Team</span></p>
-    </div>
-    </footer>
 </body>
 </html>
