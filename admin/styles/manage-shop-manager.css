@@ -1,0 +1,49 @@
+/* Table Styles */
+table {
+    width: calc(100% - 300px); /* Adjust width to account for sidebar */
+    margin-left: 20px; /* Add space from sidebar */
+    border-collapse: collapse; /* Merge borders */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+}
+
+thead {
+    background-color: #007BFF; /* Header background color */
+    color: white; /* Header text color */
+}
+
+th, td {
+    padding: 15px; /* Add padding to cells */
+    text-align: left; /* Align text to the left */
+    border-bottom: 1px solid #dddddd; /* Add a bottom border */
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1; /* Highlight row on hover */
+}
+
+th {
+    font-weight: bold; /* Make header text bold */
+}
+
+/* Action Button Styles */
+.manage-btn {
+    background-color: #28a745; /* Green background for buttons */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 8px 12px; /* Button padding */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.manage-btn:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    table {
+        width: 100%; /* Full width on smaller screens */
+        margin-left: 0; /* No margin */
+    }
+}
