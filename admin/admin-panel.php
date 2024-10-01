@@ -102,7 +102,7 @@ $recent_orders_result = mysqli_query($connection, $recent_orders_query);
         <span class="close" onclick="hidePopup()">&times;</span>
         <h3>Manage Users</h3>
         <button onclick="window.location.href='manage-shop-managers.php'" class="popup-button">Shop Managers</button>
-        <button onclick="window.location.href='manage-regular-users.php'" class="popup-button">Regular Users</button>
+        <button onclick="window.location.href='manage-regular-users.php'" class="popup-button">Customers</button>
     </div>
 </div>
 

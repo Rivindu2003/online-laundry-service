@@ -24,7 +24,7 @@ $result = mysqli_query($connection, $usersQuery);
 </head>
 <body>
     <?php $IPATH = "../global-assets/"; include($IPATH."admin-sidebar.html"); ?>
-    <h1>Manage Users</h1>
+    <h1 class="table-title">Manage Shop Managers</h1>
 
     <table>
         <thead>
@@ -45,9 +45,9 @@ $result = mysqli_query($connection, $usersQuery);
                         <td><?php echo htmlspecialchars($user['email']); ?></td>
                         <td><?php echo htmlspecialchars($user['first_name'] . ' ' . htmlspecialchars($user['last_name'])); ?></td>
                         <td><?php echo htmlspecialchars($user['phone_number']); ?></td>
-                        <td><?php echo htmlspecialchars('USER'); ?></td> 
+                        <td><?php echo htmlspecialchars('SHOP MANAGER'); ?></td> 
                         <td>
-                            <button class="manage-btn" onclick="manageUser('<?php echo htmlspecialchars($user['username']); ?>')">Manage User</button>
+                        <button class="manage-btn" onclick="window.location.href='edit-user-shopmgr.php?username=<?php echo urlencode(htmlspecialchars($user['username'])); ?>'">Edit</button>
                         </td>
                     </tr>
                 <?php endwhile; ?>
