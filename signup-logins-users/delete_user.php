@@ -24,3 +24,5 @@ if ($stmt->execute()) {
 } else {
     echo json_encode(['success' => false, 'message' => 'Failed to delete user account.']);
 }
+
+?>

@@ -21,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $failedMessage = "Login Failed";
     }
 }
+
 ?>
 <!-- HTML Form -->
 <!DOCTYPE html>

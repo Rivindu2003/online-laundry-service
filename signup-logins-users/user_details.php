@@ -11,9 +11,14 @@ if (!isset($_SESSION['user_id'])) {
 // Fetch user details
 $user_id = $_SESSION['user_id']; // Get the logged-in user's ID
 
-$query = "SELECT full_name, username, email, address, phone_number FROM users WHERE id = ?";
+$query = "SELECT first_name,last_name, username, email, address, phone_number FROM users WHERE id = ?";
 $stmt = $connection->prepare($query);
 $stmt->bind_param("i", $user_id); // Bind the user_id to the prepared statement
+if ($connection->connect_error) {
+    // Display error message if connection fails
+    die("Connection failed: " . $connection->connect_error);
+} 
+
 $stmt->execute();
 $result = $stmt->get_result();
 
