@@ -1,12 +1,14 @@
 <?php
 // Database connection
-include 'db.php'; 
+include '../global-assets/db.php'; 
 
-$successMessage = ""; // Variable to hold success message
+$successMessage = ""; 
 $errorMessage_email = "";
 $errorMessage_username = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
@@ -24,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errorMessage_username = "This username is already taken. Please try another.";
     } else {
         // Prepare the insert statement
-        $sql = "INSERT INTO users (username, password, email) VALUES ('$username', '$password', '$email')";
+        $sql = "INSERT INTO users (first_name, last_name, username, password, email) VALUES ('$first_name','$last_name','$username', '$password', '$email')";
         
         if (mysqli_query($connection, $sql)) {
             // Set success message
@@ -37,14 +39,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="styles/signup.css">
+    <link rel="stylesheet" href="../css/signup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -52,8 +53,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 
 <div class="signup-container">
-    <h2>Sign Up</h2>
+    <h2>Register to BubbleShine</h2>
     <form method="POST" action="">
+        <input type="text" name="first_name" placeholder="First Name" required>
+        <input type="text" name="last_name" placeholder="Last Name" required>
         <input type="text" name="username" placeholder="Username" required>
         <input type="email" name="email" placeholder="Email" required>
         
@@ -90,7 +93,7 @@ if ($successMessage) {
                     icon: 'success',
                     button: 'OK',
                 }).then(() => {
-                    window.location.href = 'login.php'; // Redirect after alert
+                    window.location.href = '../login/login.php'; // Redirect after alert
                 });
             };
           </script>";
@@ -108,6 +111,7 @@ if ($successMessage) {
             };
           </script>";
 }
+
 elseif ($errorMessage_username){
     echo "<script>
             window.onload = function() {
@@ -124,6 +128,6 @@ elseif ($errorMessage_username){
 }
 ?>
 
-<script src="js/signup.js"></script>
+<script src="../js/signup.js"></script>
 </body>
 </html>

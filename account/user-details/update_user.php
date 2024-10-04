@@ -1,27 +1,24 @@
 <?php
 session_start();
-include 'db.php'; 
+include '../../global-assets/db.php'; 
 
-// Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     echo json_encode(['success' => false, 'message' => 'User not logged in.']);
     exit;
 }
 
-// Get input data
 $data = json_decode(file_get_contents('php://input'), true);
 
-// Validate input
-if (isset($data['name'], $data['email'], $data['phone'], $data['address'])) {
-    $name = $data['name'];
+if (isset($data['first_name'], $data['last_name'], $data['email'], $data['phone'], $data['address'])) {
+    $first_name = $data['first_name'];
+    $last_name = $data['last_name'];
     $email = $data['email'];
     $phone = $data['phone'];
     $address = $data['address'];
 
-    // Update query
-    $update_query = "UPDATE users SET full_name = ?, email = ?, phone_number = ?, address = ? WHERE id = ?";
+    $update_query = "UPDATE users SET first_name = ?, last_name = ?, email = ?, phone_number = ?, address = ? WHERE id = ?";
     $stmt = $connection->prepare($update_query);
-    $stmt->bind_param("ssssi", $name, $email, $phone, $address, $_SESSION['user_id']);
+    $stmt->bind_param("sssssi", $first_name, $last_name, $email, $phone, $address, $_SESSION['user_id']);
     
     // Execute and check for success
     $success = $stmt->execute();

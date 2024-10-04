@@ -14,7 +14,8 @@ document.getElementById('user-form').addEventListener('submit', function(e) {
 
     // Gather data from input fields
     const userData = {
-        name: document.getElementById('name-input').value,
+        first_name: document.getElementById('first-name-input').value,
+        last_name: document.getElementById('last-name-input').value,
         email: document.getElementById('email-input').value,
         phone: document.getElementById('phone-input').value,
         address: document.getElementById('address-input').value // Include address
@@ -31,13 +32,13 @@ document.getElementById('user-form').addEventListener('submit', function(e) {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            // Update the text fields with the new values
-            document.getElementById('name').textContent = userData.name;
+            
+            document.getElementById('first-name').textContent = userData.first_name;
+            document.getElementById('last-name').textContent = userData.last_name;
             document.getElementById('email').textContent = userData.email;
             document.getElementById('phone').textContent = userData.phone;
-            document.getElementById('address').textContent = userData.address; // Update address
+            document.getElementById('address').textContent = userData.address; 
 
-            // Hide input fields and show the updated text
             document.querySelectorAll('.editable-input').forEach(el => el.style.display = 'none');
             document.querySelectorAll('.editable-text').forEach(el => el.style.display = 'block');
 

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('db.php');
+include('../../global-assets/db.php');
 
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
@@ -20,20 +20,29 @@ $orderQuery->bind_param("ii", $order_id, $user_id);
 $orderQuery->execute();
 $orderResult = $orderQuery->get_result();
 
+
 if ($orderResult->num_rows > 0) {
-    // Update the delivery details
-    // ** Error fixed here: Remove the comma before `delivery_address` in the SQL query
-    $updateQuery = $connection->prepare("UPDATE orders SET delivery_address = ? WHERE order_id = ?");
-    $updateQuery->bind_param("si", $address, $order_id);
+    // Update the orders table
+    $updateOrderQuery = $connection->prepare("UPDATE orders SET delivery_address = ? WHERE order_id = ?");
+    $updateOrderQuery->bind_param("si", $address, $order_id);
     
-    // Execute the update query and check if it was successful
-    if ($updateQuery->execute()) {
-        echo json_encode(['success' => true, 'message' => 'Order updated successfully']);
+    if ($updateOrderQuery->execute()) {
+        // Update the service_orders table
+        $updateServiceOrdersQuery = $connection->prepare("UPDATE service_orders SET delivery_address = ? WHERE order_id = ?");
+        $updateServiceOrdersQuery->bind_param("si", $address, $order_id);
+        
+        if ($updateServiceOrdersQuery->execute()) {
+            echo json_encode(['success' => true, 'message' => 'Order and Service Order updated successfully']);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Failed to update Service Order']);
+        }
+        
+        $updateServiceOrdersQuery->close();
     } else {
         echo json_encode(['success' => false, 'message' => 'Failed to update order']);
     }
 
-    $updateQuery->close();
+    $updateOrderQuery->close();
 } else {
     echo json_encode(['success' => false, 'message' => 'Order not found or you are not authorized']);
 }

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('db.php');
+include('../../global-assets/db.php');
 
 // Redirect if not logged in
 if (!isset($_SESSION['user_id'])) {
@@ -19,16 +19,16 @@ $services = $servicesQuery->fetch_all(MYSQLI_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create New Order</title>
-    <link rel="stylesheet" href="styles/header-footer-sidebar.css">
-    <link rel="stylesheet" href="styles/create_order_customer.css">
-    <link rel="stylesheet" href="styles/position.css">
+    <link rel="stylesheet" href="../../css/header-footer-sidebar.css">
+    <link rel="stylesheet" href="../../css/create_order_customer.css">
+    <link rel="stylesheet" href="../../css/position.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
-    <?php $IPATH = "assets/"; include($IPATH."header.html"); ?>
+    <?php $IPATH = "../../global-assets/"; include($IPATH."header.html"); ?>
 
-    <?php $IPATH = "assets/"; include($IPATH."sidebar.html"); ?>
+    <?php $IPATH = "../../global-assets/"; include($IPATH."sidebar.html"); ?>
 
     <div class="order-section">
         <h1>Create New Order</h1>
@@ -58,7 +58,7 @@ $services = $servicesQuery->fetch_all(MYSQLI_ASSOC);
         </div>
     </div>
 
-    <?php $IPATH = "assets/"; include($IPATH."footer.html"); ?>
+    <?php $IPATH = "../../global-assets/"; include($IPATH."footer.html"); ?>
 
     <script>
 

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'db.php'; 
+include '../global-assets/db.php'; 
 
 $successMessage = "";
 $failedMessage = "";
@@ -23,14 +23,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 ?>
-<!-- HTML Form -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="styles/signin.css"> <!-- Make sure to link your CSS file -->
+    <link rel="stylesheet" href="../css/login.css"> 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
@@ -40,13 +40,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
             <button type="submit">Login</button>
-            <p>Don't have a account? <span><a href="signup.php">Sign Up Now</a></span></p>
+            <p>Don't have a account? <span><a href="../signup/signup.php">Sign Up Now</a></span></p>
         </form>
     </div>
 
     <?php
 if ($successMessage) {
-    // Use echo to add the script after the body has loaded
+    
     echo "<script>
             window.onload = function() {
                 swal.fire({
@@ -55,7 +55,7 @@ if ($successMessage) {
                     icon: 'success',
                     button: 'OK',
                 }).then(() => {
-                    window.location.href = 'user_details.php'; // Redirect after alert
+                    window.location.href = '../account/user-panel/user-panel.php'; // Redirect after alert
                 });
             };
           </script>";

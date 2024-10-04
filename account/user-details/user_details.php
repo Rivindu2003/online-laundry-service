@@ -1,17 +1,17 @@
 <?php
 session_start();
-include 'db.php'; 
+include '../../global-assets/db.php'; 
 
 // Redirect if not logged in
 if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
+    header('Location: ../../login/login.php');
     exit;
 }
 
 // Fetch user details
 $user_id = $_SESSION['user_id']; // Get the logged-in user's ID
 
-$query = "SELECT first_name,last_name, username, email, address, phone_number FROM users WHERE id = ?";
+$query = "SELECT first_name, last_name, username, email, address, phone_number FROM users WHERE id = ?";
 $stmt = $connection->prepare($query);
 $stmt->bind_param("i", $user_id); // Bind the user_id to the prepared statement
 if ($connection->connect_error) {
@@ -37,32 +37,37 @@ if ($result->num_rows > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
-    <link rel="stylesheet" href="styles/header-footer-sidebar.css">
-    <link rel="stylesheet" href="styles/user-details.css">
-    <link rel="stylesheet" href="styles/position.css">
+    <link rel="stylesheet" href="../../css/header-footer-sidebar.css">
+    <link rel="stylesheet" href="../../css/user-details.css">
+    <link rel="stylesheet" href="../../css/position.css">
 </head>
 <body>
-   <?php $IPATH = "assets/"; include($IPATH."header.html"); ?>
-    <!-- User Details Section -->
-    <?php $IPATH = "assets/"; include($IPATH."sidebar.html"); ?>
+   <?php $IPATH = "../../global-assets/"; include($IPATH."header.html"); ?>
+
+    <?php $IPATH = "../../global-assets/"; include($IPATH."sidebar.html"); ?>
     
     <div class="container">
-        <!-- User Image and Info -->
+  
        
         <div class="profile">
-            <img src="images\avatar.png" alt="User Avatar">
+            <img src="../../images/avatar.png" alt="User Avatar">
             <h2><?php echo htmlspecialchars($user['username']); ?></h2>
             <p>Welcome to BubbleShine</p>
             <p>Contact us at bubbleshine@gmail.com</p>
         </div>
 
-        <!-- User Details Section -->
+        
         <div class="details">
             <form id="user-form">
                 <div class="detail-item">
-                    <label>Full Name</label>
-                    <p class="editable-text" id="name"><?php echo htmlspecialchars($user['full_name']); ?></p>
-                    <input type="text" class="editable-input" id="name-input" value="<?php echo htmlspecialchars($user['username']); ?>" style="display:none;">
+                    <label>First Name</label>
+                    <p class="editable-text" id="first-name"><?php echo htmlspecialchars($user['first_name']); ?></p>
+                    <input type="text" class="editable-input" id="first-name-input" value="<?php echo htmlspecialchars($user['username']); ?>" style="display:none;">
+                </div>
+                <div class="detail-item">
+                    <label>Last Name</label>
+                    <p class="editable-text" id="last-name"><?php echo htmlspecialchars($user['last_name']); ?></p>
+                    <input type="text" class="editable-input" id="last-name-input" value="<?php echo htmlspecialchars($user['username']); ?>" style="display:none;">
                 </div>
                 <div class="detail-item">
                     <label>Email</label>
@@ -86,9 +91,9 @@ if ($result->num_rows > 0) {
             </form>
         </div>
     </div>
-    <?php $IPATH = "assets/"; include($IPATH."footer.html"); ?>
+    <?php $IPATH = "../../global-assets/"; include($IPATH."footer.html"); ?>
    
-    <script src="js/user_details.js"></script>
+    <script src="../../js/user_details.js"></script>
 </body>
 </html>
 

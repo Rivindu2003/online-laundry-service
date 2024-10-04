@@ -1,16 +1,16 @@
 <?php
 session_start();
-include('db.php');
+include('../../global-assets/db.php');
 
 if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
+    header('Location: ../../login/login.php');
     exit;
 }
 
 $user_id = $_SESSION['user_id'];
 
 // Fetch user details from the users table
-$userQuery = $connection->prepare("SELECT full_name, phone_number FROM users WHERE id = ?");
+$userQuery = $connection->prepare("SELECT first_name, last_name, phone_number FROM users WHERE id = ?");
 if ($userQuery === false) {
     die("Error preparing statement: " . $connection->error); // This will print the MySQL error
 }
@@ -47,9 +47,9 @@ $totalPrice = 0;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Details</title>
-    <link rel="stylesheet" href="styles/view-order.css">
-    <link rel="stylesheet" href="styles/header-footer-sidebar.css">
-    <link rel="stylesheet" href="styles/position.css">
+    <link rel="stylesheet" href="../../css/view-order.css">
+    <link rel="stylesheet" href="../../css/header-footer-sidebar.css">
+    <link rel="stylesheet" href="../../css/position.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
 
@@ -137,14 +137,14 @@ $totalPrice = 0;
 </head>
 <body>
 
-        <?php $IPATH = "assets/"; include($IPATH."header.html"); ?>
+        <?php $IPATH = "../../global-assets/"; include($IPATH."header.html"); ?>
 
-        <?php $IPATH = "assets/"; include($IPATH."sidebar.html"); ?>
+        <?php $IPATH = "../../global-assets/"; include($IPATH."sidebar.html"); ?>
 
     <div class="order-container">
         <!-- Display Order ID and User Information -->
         <h1>Order #BB_0<?php echo $order['order_id']; ?></h1>
-        <p><strong>Full Name:</strong> <?php echo $user['full_name']; ?></p>
+        <p><strong>Full Name:</strong> <?php echo $user['first_name'] . ' ' . $user['last_name']; ?></p>
         <p><strong>Phone Number:</strong> <?php echo $user['phone_number']; ?></p>
 
         <!-- Display Service Orders in a Table -->
@@ -190,7 +190,7 @@ $totalPrice = 0;
     <?php endif; ?>
     </div>
 
-    <?php $IPATH = "assets/"; include($IPATH."footer.html"); ?>
+    <?php $IPATH = "../../global-assets/"; include($IPATH."footer.html"); ?>
 </body>
 </html>
 

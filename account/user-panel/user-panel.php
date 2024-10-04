@@ -1,22 +1,18 @@
 <?php
-// Include your database connection file
 session_start();
-include('db.php');
+include('../../global-assets/db.php');
 
-// Redirect if not logged in
 if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
+    header('Location: ../../login/login.php');
     exit;
 }
 
-// Get the logged-in user's ID (assuming you store it in session)
-$userId = $_SESSION['user_id']; // Adjust this based on your session variable
+$userId = $_SESSION['user_id']; 
 
-// Fetch orders for the logged-in user
 $query = "SELECT orders.*, users.username, users.email 
           FROM orders 
           JOIN users ON orders.customer_id = users.id 
-          WHERE orders.customer_id = ?"; // Make sure to replace 'user_id' with your actual column name
+          WHERE orders.customer_id = ?"; 
 $stmt = $connection->prepare($query);
 $stmt->bind_param("i", $userId);
 $stmt->execute();
@@ -30,15 +26,15 @@ $userInfo = $result->fetch_assoc()
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
-    <link rel="stylesheet" href="styles/header-footer-sidebar.css">
-    <link rel="stylesheet" href="styles/user-panel.css">
-    <link rel="stylesheet" href="styles/position.css">
+    <link rel="stylesheet" href="../../css/header-footer-sidebar.css">
+    <link rel="stylesheet" href="../../css/user-panel.css">
+    <link rel="stylesheet" href="../../css/position.css">
 </head>
 <body>
 
-    <?php $IPATH = "assets/"; include($IPATH."header.html"); ?>
+    <?php $IPATH = "../../global-assets/"; include($IPATH."header.html"); ?>
 
-    <?php $IPATH = "assets/"; include($IPATH."sidebar.html"); ?>
+    <?php $IPATH = "../../global-assets/"; include($IPATH."sidebar.html"); ?>
 
     <div class="container">
 
@@ -61,9 +57,9 @@ $userInfo = $result->fetch_assoc()
             <?php while ($row = $result->fetch_assoc()): ?>
                 <tr>
                     <td><?php echo '#0000' .$row['order_id']; ?></td>
-                    <td><?php echo date('Y-m-d', strtotime($row['order_date'])); ?></td> <!-- Adjust column name if necessary -->
-                    <td><?php echo number_format($row['total_amount'], 2); ?> LKR</td> <!-- Assuming 'total' is a decimal value -->
-                    <td><?php echo $row['status']; ?></td> <!-- Adjust column name if necessary -->
+                    <td><?php echo date('Y-m-d', strtotime($row['order_date'])); ?></td> 
+                    <td><?php echo number_format($row['total_amount'], 2); ?> LKR</td> 
+                    <td><?php echo $row['status']; ?></td> 
                     <td>
                         <a href="view-order.php?order_id=<?php echo $row['order_id']; ?>"><button type="button">VIEW</button></a>
                     </td>
@@ -75,7 +71,7 @@ $userInfo = $result->fetch_assoc()
         <a href="create_order_customer.php"><button type="button">Create Order</button></a>
     </div>
 </div>
-    <?php $IPATH = "assets/"; include($IPATH."footer.html"); ?>
+    <?php $IPATH = "../../global-assets/"; include($IPATH."footer.html"); ?>
 
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('db.php');
+include('../../global-assets/db.php');
 
 // Get data from the AJAX request
 $data = json_decode(file_get_contents("php://input"), true);
