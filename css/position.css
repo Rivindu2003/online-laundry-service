@@ -1,0 +1,25 @@
+body {
+    position: relative; /* Set relative positioning for the body */
+}
+
+.sidebar {
+    position: absolute; /* Position sidebar absolutely */
+    left: 0; /* Align to the left */
+    width: 250px; /* Adjust width as needed */
+    /* Additional styles for sidebar */
+}
+
+.container {
+    margin-left: 260px; /* Adjust margin to prevent overlap */
+    padding: 20px; /* Add padding as needed */
+}
+
+.order-section {
+    margin-left: 300px;
+    padding-left:  30px;
+}
+
+.order-container {
+    margin-left: 500px;
+    padding-left:  30px;
+}

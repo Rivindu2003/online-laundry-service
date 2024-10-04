@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.order-section {
+    text-align: center;
+    margin: 50px auto;
+}
+
+h1 {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.service-list, .selected-services {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.service-item, .selected-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.service-item button, .selected-item button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.remove-btn {
+    background-color: #f44336;
+}
+
+.total-section {
+    text-align: center;
+    margin: 20px;
+    font-size: 1.5em;
+}
+
+.form-inputs {
+    width: 80%;
+    margin: 20px auto;
+    text-align: left;
+}
+
+.form-inputs input, .form-inputs select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+.form-inputs input[type="submit"] {
+    width: auto;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}

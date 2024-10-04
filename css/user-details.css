@@ -1,0 +1,86 @@
+.container {
+    max-width: auto; /* Maximum width of the container */
+    margin: 20px auto; /* Center align the container */
+    padding: 20px; /* Padding around the container */
+    background-color: #ffffff; /* White background for the container */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.profile {
+    text-align: center; /* Center-align text and image */
+    margin-bottom: 30px; /* Space below the profile section */
+}
+
+.profile img {
+    width: 100px; /* Set width of the avatar */
+    height: 100px; /* Set height of the avatar */
+    border-radius: 50%; /* Make the avatar circular */
+    object-fit: cover; /* Cover the image within the avatar area */
+    margin-bottom: 15px; /* Space below the image */
+}
+
+.profile h2 {
+    font-size: 24px; /* Font size for the username */
+    color: #121212; /* Dark color for username */
+    margin-bottom: 5px; /* Space below the username */
+}
+
+.profile p {
+    font-size: 16px; /* Font size for welcome and contact text */
+    color: #666; /* Gray color for text */
+}
+
+.details {
+    border-top: 1px solid #e0e0e0; /* Top border for details section */
+    padding-top: 20px; /* Padding above the details section */
+}
+
+.detail-item {
+    margin-bottom: 20px; /* Space below each detail item */
+}
+
+.detail-item label {
+    font-weight: bold; /* Bold font for labels */
+    display: block; /* Block display for labels */
+    margin-bottom: 5px; /* Space below the label */
+}
+
+.editable-text {
+    font-size: 16px; /* Font size for editable text */
+    color: #333; /* Dark color for editable text */
+    margin: 5px 0; /* Space above and below the editable text */
+}
+
+.editable-input {
+    width: 100%; /* Full width for input fields */
+    padding: 8px; /* Padding inside input fields */
+    border: 1px solid #ccc; /* Light border for input fields */
+    border-radius: 4px; /* Rounded corners for input fields */
+    font-size: 16px; /* Font size for input fields */
+    display: none; /* Hide input fields initially */
+}
+
+button {
+    background-color: #004B90; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners for buttons */
+    padding: 10px 15px; /* Padding inside buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size for buttons */
+    transition: background-color 0.3s; /* Transition for hover effect */
+    margin-right: 10px; /* Space between buttons */
+}
+
+button:hover {
+    background-color: #003066; /* Darker shade on hover */
+}
+
+#delete-btn {
+    background-color: #e74c3c; /* Red background for delete button */
+}
+
+#delete-btn:hover {
+    background-color: #c0392b; /* Darker red on hover */
+}

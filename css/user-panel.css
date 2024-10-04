@@ -1,0 +1,175 @@
+/* Styling the container */
+.container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background for contrast */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Headings */
+.container h1, .container h2 {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.container h1 {
+    font-size: 2.2em;
+    font-weight: bold;
+}
+
+.container h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Removes space between borders */
+    margin-bottom: 20px;
+}
+
+thead th {
+    background-color: #333; /* Dark background for header */
+    color: #fff; /* White text for contrast */
+    font-size: 1.1em;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #555; /* Adds border to separate header */
+}
+
+tbody td {
+    padding: 15px;
+    font-size: 1em;
+    color: #555;
+    border-bottom: 1px solid #ddd; /* Soft border between rows */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f1f1f1; /* Alternating row colors */
+}
+
+/* Table hover effect */
+tbody tr:hover {
+    background-color: #f4f4f4;
+    cursor: pointer;
+}
+
+/* Button styles */
+button {
+    padding: 8px 15px;
+    font-size: 0.9em;
+    color: #fff;
+    background-color: #007bff; /* Primary blue color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 5px;
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Table responsive for small screens */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    table {
+        font-size: 0.9em; /* Reduce font size */
+    }
+    
+    button {
+        padding: 6px 10px; /* Smaller buttons */
+        font-size: 0.8em;
+    }
+}
+
+/* Centering the container and button */
+.createOrder {
+    display: flex;
+    justify-content: left;
+    align-items: center; /* Vertical centering */
+}
+
+/* Styling the button */
+.createOrder button {
+    background-color: #1f0199; /* Green background */
+    color: #fff; /* White text */
+    font-size: 1.5em; /* Increase font size */
+    padding: 15px 30px; /* Larger padding */
+    border: none; /* Remove border */
+    border-radius: 10px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover */
+}
+
+/* Button hover effect */
+.createOrder button:hover {
+    background-color: #04002a; /* Darker green on hover */
+    transform: scale(1.05); /* Slight scaling effect */
+}
+.order-popup-content {
+    background-color: #fff; /* Background color of the popup */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    padding: 20px;
+    width: 400px; /* Set a width for the popup */
+    max-width: 90%; /* Responsive width */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+}
+
+.service-list,
+.selected-services,
+.total-price {
+    margin-bottom: 20px; /* Space between sections */
+}
+
+.order-popup-content label {
+    display: block; /* Make labels block elements */
+    margin-bottom: 5px; /* Space below labels */
+}
+
+input[type="text"],
+input[type="datetime-local"] {
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding inside input */
+    border: 1px solid #ccc; /* Border */
+    border-radius: 4px; /* Rounded corners */
+}
+
+button {
+    padding: 10px 15px; /* Padding for buttons */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners */
+    background-color: #28a745; /* Green background */
+    color: #fff; /* White text color */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin-right: 10px; /* Space between buttons */
+}
+
+button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+.createOrder {
+    display: flex; /* Flexbox layout */
+    justify-content: space-between; /* Space between elements */
+    align-items: center; /* Center vertically */
+}
+
+.createOrder button {
+    background-color: #dc3545; /* Red background for cancel button */
+}
+
+.createOrder button:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
