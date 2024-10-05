@@ -9,7 +9,6 @@ if (!isset($_SESSION['ses_admin_id'])) {
 
 include 'global-assets/db.php';
 
-// Get total users
 $user_query = "SELECT COUNT(*) AS total_users FROM users";
 $user_result = $connection->query($user_query);
 $user_data = $user_result->fetch_assoc();
