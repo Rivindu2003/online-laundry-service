@@ -1,6 +1,6 @@
 <?php
 
-include '../global-assets/db.php';
+include '../../global-assets/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve data from POST request
@@ -38,11 +38,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create New Service</title>
-    <link rel="stylesheet" href="../global-assets/admin-sidebar.css">
-    <link rel="stylesheet" href="styles/create-service.css">
+    <link rel="stylesheet" href="../../css/admin-sidebar.css">
+    <link rel="stylesheet" href="../../css/create-service.css">
 </head>
 <body>
-<?php $IPATH = "../global-assets/"; include($IPATH."admin-sidebar.html"); ?>
+<?php $IPATH = "../../global-assets/"; include($IPATH."admin-sidebar.html"); ?>
 
             <div id="create-service">
                 <h2>Create New Service</h2>
@@ -60,6 +60,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <button id="reset-button" type="button">Reset & Return</button>
                 </form>
             </div>
-        <script src="js/create-service.js"></script>
+        <script src="../../js/create-service.js"></script>
 </body>
 </html>

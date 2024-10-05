@@ -5,5 +5,5 @@ document.getElementById('reset-button').addEventListener('click', function() {
     // Reset the form fields
     form.reset();
 
-    window.location.href = "shop-manager.php";
+    window.location.href = "../../shop-manager.php";
 });
