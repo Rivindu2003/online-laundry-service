@@ -31,6 +31,7 @@ document.getElementById('user-form').addEventListener('submit', function(e) {
     })
     .then(response => response.json())
     .then(data => {
+        console.log(data);
         if (data.success) {
             
             document.getElementById('first-name').textContent = userData.first_name;
@@ -54,32 +55,6 @@ document.getElementById('user-form').addEventListener('submit', function(e) {
     });
 });
 
-document.getElementById('delete-btn').addEventListener('click', function() {
-    // Show confirmation dialog
-    if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
-        // Send AJAX request to delete user account
-        fetch('delete_user.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert('Your account has been deleted successfully.');
-                window.location.href = 'login.php'; // Redirect to login page after deletion
-            } else {
-                alert('Failed to delete account: ' + (data.message || 'Unknown error'));
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('An error occurred while deleting the account.');
-        });
-    }
-});
-
 document.getElementById('edit-btn').addEventListener('click', function() {
     // Hide the Delete button when editing
     document.getElementById('delete-btn').style.display = 'none';
@@ -92,6 +67,22 @@ document.getElementById('edit-btn').addEventListener('click', function() {
 
     document.getElementById('edit-btn').style.display = 'none';
     document.getElementById('save-btn').style.display = 'inline-block';
+});
+
+document.getElementById('delete-btn').addEventListener('click', function() {
+    // SweetAlert confirmation dialog
+    swal({
+        title: 'Are you sure?',
+        text: 'Once deleted, you will not be able to recover this account!',
+        icon: 'warning',
+        buttons: ['Cancel', 'Yes, delete it!'],
+        dangerMode: true, // Makes the confirm button red
+    }).then((willDelete) => {
+        if (willDelete) {
+            // Redirect to delete.php if confirmed
+            window.location.href = 'delete_user.php';
+        }
+    });
 });
 
 

@@ -40,6 +40,7 @@ if ($result->num_rows > 0) {
     <link rel="stylesheet" href="../../css/header-footer-sidebar.css">
     <link rel="stylesheet" href="../../css/user-details.css">
     <link rel="stylesheet" href="../../css/position.css">
+    <script src="../../sweetalert/docs/assets/sweetalert/sweetalert.min.js"></script>
 </head>
 <body>
    <?php $IPATH = "../../global-assets/"; include($IPATH."header.html"); ?>
@@ -62,12 +63,12 @@ if ($result->num_rows > 0) {
                 <div class="detail-item">
                     <label>First Name</label>
                     <p class="editable-text" id="first-name"><?php echo htmlspecialchars($user['first_name']); ?></p>
-                    <input type="text" class="editable-input" id="first-name-input" value="<?php echo htmlspecialchars($user['username']); ?>" style="display:none;">
+                    <input type="text" class="editable-input" id="first-name-input" value="<?php echo htmlspecialchars($user['first_name']); ?>" style="display:none;">
                 </div>
                 <div class="detail-item">
                     <label>Last Name</label>
                     <p class="editable-text" id="last-name"><?php echo htmlspecialchars($user['last_name']); ?></p>
-                    <input type="text" class="editable-input" id="last-name-input" value="<?php echo htmlspecialchars($user['username']); ?>" style="display:none;">
+                    <input type="text" class="editable-input" id="last-name-input" value="<?php echo htmlspecialchars($user['last_name']); ?>" style="display:none;">
                 </div>
                 <div class="detail-item">
                     <label>Email</label>
@@ -96,4 +97,3 @@ if ($result->num_rows > 0) {
     <script src="../../js/user_details.js"></script>
 </body>
 </html>
-

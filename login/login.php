@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="../css/login.css"> 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../sweetalert/docs/assets/sweetalert/sweetalert.min.js"></script>
 </head>
 <body>
     <div class="login-container">
@@ -49,7 +49,7 @@ if ($successMessage) {
     
     echo "<script>
             window.onload = function() {
-                swal.fire({
+                swal({
                     title: 'Success!',
                     text: '$successMessage',
                     icon: 'success',
@@ -62,7 +62,7 @@ if ($successMessage) {
 }else if ($failedMessage){
     echo "<script>
             window.onload = function() {
-                swal.fire({
+                swal({
                     title: 'Oops..!',
                     text: '$failedMessage',
                     icon: 'error',

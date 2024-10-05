@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../signup-logins-users/db.php'; // Include your database connection file
+include '../global-assets/db.php'; // Include your database connection file
 
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) {

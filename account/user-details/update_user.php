@@ -23,8 +23,10 @@ if (isset($data['first_name'], $data['last_name'], $data['email'], $data['phone'
     // Execute and check for success
     $success = $stmt->execute();
     
-    // Return response
-    echo json_encode(['success' => $success]);
-} else {
-    echo json_encode(['success' => false, 'message' => 'Invalid input.']);
-}
+    if ($success) {
+        echo json_encode(['success' => true]);
+    } else {
+        echo json_encode(['success' => false]);
+    }
+    
+} 

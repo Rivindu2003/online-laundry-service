@@ -68,7 +68,7 @@ $userInfo = $result->fetch_assoc()
         </tbody>
     </table>
     <div class="createOrder">
-        <a href="create_order_customer.php"><button type="button">Create Order</button></a>
+        <a href="create_order_customer.php"><button type="button">Create New Order</button></a>
     </div>
 </div>
     <?php $IPATH = "../../global-assets/"; include($IPATH."footer.html"); ?>

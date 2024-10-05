@@ -15,7 +15,6 @@
 .profile img {
     width: 100px; /* Set width of the avatar */
     height: 100px; /* Set height of the avatar */
-    border-radius: 50%; /* Make the avatar circular */
     object-fit: cover; /* Cover the image within the avatar area */
     margin-bottom: 15px; /* Space below the image */
 }
