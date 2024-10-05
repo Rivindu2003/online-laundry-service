@@ -1,12 +1,14 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login-admin.php");
-    exit();
+if (!isset($_SESSION['ses_admin_id'])) {
+    echo '<h1>Unauthorized Access</h1>';
+    echo '<p>You do not have permission to access this page.</p>';
+    echo '<p><a href="../../login-admin/login-admin.php">Click to login</a></p>';
+    exit;
 }
 
-include '../global-assets/db.php';
+include '../../global-assets/db.php';
 
 // Get username from query string
 if (isset($_GET['username'])) {
@@ -63,11 +65,11 @@ if (isset($_POST['delete_user'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit User</title>
-    <link rel="stylesheet" href="../global-assets/admin-sidebar.css">
-    <link rel="stylesheet" href="styles/admin-panel.css">
+    <link rel="stylesheet" href="../../css/admin-sidebar.css">
+    <link rel="stylesheet" href="../../css/admin-panel.css">
 </head>
 <body>
-    <?php $IPATH = "../global-assets/"; include($IPATH . "admin-sidebar.html"); ?>
+    <?php $IPATH = "../../global-assets/"; include($IPATH . "admin-sidebar.html"); ?>
     
     <div class="edit-user-container">
         <h1>Edit User Details</h1>
@@ -87,7 +89,7 @@ if (isset($_POST['delete_user'])) {
             </div>
             <div>
                 <label>Phone Number:</label>
-                <input type="text" name="phone_number" value="<?php echo htmlspecialchars($user['phone_number']); ?>" required>
+                <input type="text" name="phone_number" value="<?php echo htmlspecialchars($user['phone_number'] ?? ''); ?>" required>
             </div>
             <div class="button-group">
                 <button class="manage-btn" onclick="window.location.href='edit-user-customer.php?username=<?php echo urlencode(htmlspecialchars($user['username'])); ?>'">Save Changes ✅</button>

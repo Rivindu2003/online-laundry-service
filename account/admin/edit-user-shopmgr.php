@@ -1,12 +1,16 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login-admin.php");
-    exit();
+if (!isset($_SESSION['ses_admin_id'])) {
+    echo '<h1>Unauthorized Access</h1>';
+    echo '<p>You do not have permission to access this page.</p>';
+    echo '<p><a href="../../login-admin/login-admin.php">Click to login</a></p>';
+    exit;
 }
 
-include '../global-assets/db.php';
+include '../../global-assets/db.php';
+
+$success_message = '';
 
 // Get username from query string
 if (isset($_GET['username'])) {
@@ -41,11 +45,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $update_stmt->bind_param("sssss", $first_name, $last_name, $email, $phone_number, $username);
     $update_stmt->execute();
 
-    echo "<script>alert('User updated successfully!');
-            window.location.href = 'manage-shop-managers.php';</script>";
+    $success_message = "User Updated";
 }
 
-// Handle delete user request
 if (isset($_POST['delete_user'])) {
     $delete_query = "DELETE FROM shop_managers WHERE username = ?";
     $delete_stmt = $connection->prepare($delete_query);
@@ -63,11 +65,12 @@ if (isset($_POST['delete_user'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit User</title>
-    <link rel="stylesheet" href="../global-assets/admin-sidebar.css">
-    <link rel="stylesheet" href="styles/admin-panel.css">
+    <link rel="stylesheet" href="../../css/admin-sidebar.css">
+    <link rel="stylesheet" href="../../css/admin-panel.css">
+    <script src="../../sweetalert/docs/assets/sweetalert/sweetalert.min.js"></script>
 </head>
 <body>
-    <?php $IPATH = "../global-assets/"; include($IPATH . "admin-sidebar.html"); ?>
+    <?php $IPATH = "../../global-assets/"; include($IPATH . "admin-sidebar.html"); ?>
     
     <div class="edit-user-container">
         <h1>Edit User Details</h1>
@@ -95,6 +98,19 @@ if (isset($_POST['delete_user'])) {
             </div>
         </form>
     </div>
+    <?php
+    if ($success_message) {
+            echo "<script>
+                swal({
+                    title: 'Done!',
+                    text: 'User updated!',
+                    icon: 'success'
+                }).then((value) => {
+            window.location.href = 'manage-shop-managers.php';
+        });
+            </script>";
+}
+    ?>
 </body>
 </html>
 

@@ -1,7 +1,14 @@
 <?php
 // Start the session
 session_start();
-include '../global-assets/db.php'; // Include your database connection
+include '../../global-assets/db.php'; // Include your database connection
+
+if (!isset($_SESSION['ses_admin_id'])) {
+    echo '<h1>Unauthorized Access</h1>';
+    echo '<p>You do not have permission to access this page.</p>';
+    echo '<p><a href="../../login-admin/login-admin.php">Click to login</a></p>';
+    exit;
+}
 
 // Initialize filter variable
 $filter = isset($_GET['user_type']) ? $_GET['user_type'] : 'all';
@@ -15,15 +22,17 @@ $result = mysqli_query($connection, $usersQuery);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Users</title>
-    <link rel="stylesheet" href="styles/manage-shop-manager.css"> <!-- Include your CSS file -->
-    <link rel="stylesheet" href="../global-assets/admin-sidebar.css">
+    <link rel="stylesheet" href="../../css/manage-shop-manager.css"> 
+    <link rel="stylesheet" href="../../css/admin-sidebar.css">
 </head>
+
 <body>
-    <?php $IPATH = "../global-assets/"; include($IPATH."admin-sidebar.html"); ?>
+    <?php $IPATH = "../../global-assets/"; include($IPATH."admin-sidebar.html"); ?>
     <h1 class="table-title">Manage Shop Managers</h1>
 
     <table>
