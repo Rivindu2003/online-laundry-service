@@ -1,6 +1,11 @@
 <?php
 session_start();
-include '../global-assets/db.php';
+include 'global-assets/db.php';
+
+if (!isset($_SESSION['shop_manager_id'])) {
+    header('Location: login-shop/login.php');
+    exit;
+}
 
 try {
     // Fetch services from the database
@@ -38,11 +43,11 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop Manager</title>
-    <link rel="stylesheet" href="../global-assets/admin-sidebar.css">
-    <link rel="stylesheet" href="styles/shop-manager.css">
+    <link rel="stylesheet" href="css/admin-sidebar.css">
+    <link rel="stylesheet" href="css/shop-manager.css">
 </head>
 <body>
-        <?php $IPATH = "../global-assets/"; include($IPATH."admin-sidebar.html"); ?>
+        <?php $IPATH = "global-assets/"; include($IPATH."admin-sidebar.html"); ?>
 
             <div class="container">
             <h1>Listed Services</h1>
@@ -60,7 +65,7 @@ try {
                                 <tr>
                                     <td><?php echo htmlspecialchars($service['service_name']); ?></td>
                                     <td><?php echo htmlspecialchars($service['price']); ?> LKR</td>
-                                    <td><a href="edit-service.php?service_id=<?php echo $service['service_id']; ?>" class="btn">Edit</a></td>
+                                    <td><a href="account/shop-manager/edit-service.php?service_id=<?php echo $service['service_id']; ?>" class="btn">Edit</a></td>
                                 </tr>
                             <?php endforeach; ?>
                         <?php else: ?>
@@ -71,7 +76,7 @@ try {
                     </tbody>
                 </table>
                 <div class="create-service">
-                    <a href="create-service.php" class="create-btn">Create New Service</a>
+                    <a href="account/shop-manager/create-service.php" class="create-btn">Create New Service</a>
                 </div>
             </div>
 
