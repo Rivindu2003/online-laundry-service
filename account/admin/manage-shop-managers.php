@@ -32,7 +32,7 @@ $result = mysqli_query($connection, $usersQuery);
 </head>
 
 <body>
-    <?php $IPATH = "../../global-assets/"; include($IPATH."admin-sidebar.html"); ?>
+    <?php $IPATH = "../../global-assets/"; include($IPATH."administrator-sidebar.html"); ?>
     <h1 class="table-title">Manage Shop Managers</h1>
 
     <table>

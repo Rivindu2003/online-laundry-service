@@ -29,7 +29,7 @@ $result = mysqli_query($connection, $usersQuery);
     <link rel="stylesheet" href="../../css/admin-sidebar.css">
 </head>
 <body>
-    <?php $IPATH = "../../global-assets/"; include($IPATH."admin-sidebar.html"); ?>
+    <?php $IPATH = "../../global-assets/"; include($IPATH."administrator-sidebar.html"); ?>
     <h1 class="table-title">Manage Customers</h1>
 
     <table>

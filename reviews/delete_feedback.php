@@ -1,19 +1,24 @@
 <?php
-session_start();
-include '../signup-logins-users/db.php'; // Include your database connection file
+// Assuming you have a connection to your database in this file
+include('../global-assets/db.php'); // Include your database connection
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id'])) {
-    $id = intval($_POST['id']);
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Get the review ID from the POST request
+    $review_id = $_POST['review_id'];
 
-    // Delete the feedback from the database
-    $sql = "DELETE FROM reviews WHERE review_id = ?";
-    $stmt = $connection->prepare($sql);
-    $stmt->bind_param("i", $id);
-    
+    // Prepare and execute the deletion statement
+    $stmt = $connection->prepare("DELETE FROM reviews WHERE review_id = ?");
+    $stmt->bind_param("i", $review_id); // 'i' indicates the type (integer)
+
     if ($stmt->execute()) {
-        echo "Feedback deleted successfully";
+        // Success: Redirect or display success message
+        echo "<script>alert('Feedback deleted successfully.'); window.location.href='manage-feedback.php';</script>";
     } else {
-        echo "Error deleting feedback";
+        // Error: Display an error message
+        echo "<script>alert('Error deleting feedback. Please try again.'); window.location.href='manage-feedback.php';</script>";
     }
+
+    $stmt->close();
+    $connection->close();
 }
 ?>

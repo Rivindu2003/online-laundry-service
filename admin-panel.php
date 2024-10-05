@@ -34,7 +34,7 @@ $recent_orders_result = mysqli_query($connection, $recent_orders_query);
     <link rel="stylesheet" href="css/admin-panel.css">
 </head>
 <body>
-        <?php $IPATH = "global-assets/"; include($IPATH."admin-sidebar.html"); ?>
+        <?php $IPATH = "global-assets/"; include($IPATH."administrator-sidebar.html"); ?>
 
         <div class="dashboard-container">
         <!-- User Stats Section -->

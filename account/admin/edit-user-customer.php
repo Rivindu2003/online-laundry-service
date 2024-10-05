@@ -69,7 +69,7 @@ if (isset($_POST['delete_user'])) {
     <link rel="stylesheet" href="../../css/admin-panel.css">
 </head>
 <body>
-    <?php $IPATH = "../../global-assets/"; include($IPATH . "admin-sidebar.html"); ?>
+    <?php $IPATH = "../../global-assets/"; include($IPATH . "administrator-sidebar.html"); ?>
     
     <div class="edit-user-container">
         <h1>Edit User Details</h1>

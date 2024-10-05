@@ -47,9 +47,13 @@ $feedbacks = $result->fetch_all(MYSQLI_ASSOC);
                     <tr>
                         <td><?php echo htmlspecialchars($feedback['review']); ?></td>
                         <td><?php echo date('Y-m-d H:i:s', strtotime($feedback['review_date'])); ?></td>
+                        
                         <td>
-                            <button class="edit-btn" onclick="editFeedback(<?php echo $feedback['review_id']; ?>)">Edit</button>
-                            <button class="delete-btn" onclick="deleteFeedback(<?php echo $feedback['review_id']; ?>)">Delete</button>
+                        <button class="edit-btn" onclick="editFeedback(<?php echo $feedback['review_id']; ?>)">Edit</button>
+                            <form method="POST" action="delete_feedback.php" onsubmit="return confirmDeletion();">
+                                <input type="hidden" name="review_id" value="<?php echo $feedback['review_id']; ?>">
+                                <button type="submit" class="delete-btn">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 <?php endforeach; ?>
