@@ -2,6 +2,8 @@
 
 include '../../global-assets/db.php';
 
+$message = '';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve data from POST request
     $serviceName = $_POST['serviceName'];
@@ -40,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Create New Service</title>
     <link rel="stylesheet" href="../../css/admin-sidebar.css">
     <link rel="stylesheet" href="../../css/create-service.css">
+    <script src="../../sweetalert/docs/assets/sweetalert/sweetalert.min.js"></script>
 </head>
 <body>
 <?php $IPATH = "../../global-assets/"; include($IPATH."admin-sidebar.html"); ?>
@@ -60,6 +63,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <button id="reset-button" type="button">Reset & Return</button>
                 </form>
             </div>
+<?php
+        if ($message) {
+            // Use echo to add the script after the body has loaded
+            echo "<script>
+                    window.onload = function() {
+                        swal({
+                            title: 'Success!',
+                            text: '$message',
+                            icon: 'success',
+                            button: 'OK',
+                        }).then(() => {
+                            window.location.href = '../../shop-manager.php'; // Redirect after alert
+                        });
+                    };
+                </script>";
+        }
+?>
         <script src="../../js/create-service.js"></script>
 </body>
 </html>
