@@ -2,12 +2,12 @@
 
 session_start();
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login-admin.php");
+if (!isset($_SESSION['ses_admin_id'])) {
+    header("Location: login-admin/login-admin.php");
     exit();
 }
 
-include '../global-assets/db.php';
+include 'global-assets/db.php';
 
 // Get total users
 $user_query = "SELECT COUNT(*) AS total_users FROM users";
@@ -31,11 +31,11 @@ $recent_orders_result = mysqli_query($connection, $recent_orders_query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrator Dashboard</title>
-    <link rel="stylesheet" href="../global-assets/admin-sidebar.css">
-    <link rel="stylesheet" href="styles/admin-panel.css">
+    <link rel="stylesheet" href="css/admin-sidebar.css">
+    <link rel="stylesheet" href="css/admin-panel.css">
 </head>
 <body>
-        <?php $IPATH = "../global-assets/"; include($IPATH."admin-sidebar.html"); ?>
+        <?php $IPATH = "global-assets/"; include($IPATH."admin-sidebar.html"); ?>
 
         <div class="dashboard-container">
         <!-- User Stats Section -->
@@ -53,8 +53,8 @@ $recent_orders_result = mysqli_query($connection, $recent_orders_query);
             </div>
             <!-- Buttons to Add/Manage Users -->
             <div class="user-buttons">
-                <a href="add-user.php" class="btn">Add New User</a>
-                <a href="manage-users.php" class="btn">Manage Users</a>
+                <a href="account/admin/add-user.php" class="btn">Add New User</a>
+                <a href="account/admin/manage-users.php" class="btn">Manage Users</a>
             </div>
         </section>
 
@@ -101,8 +101,8 @@ $recent_orders_result = mysqli_query($connection, $recent_orders_query);
     <div class="popup-content">
         <span class="close" onclick="hidePopup()">&times;</span>
         <h3>Manage Users</h3>
-        <button onclick="window.location.href='manage-shop-managers.php'" class="popup-button">Shop Managers</button>
-        <button onclick="window.location.href='manage-regular-users.php'" class="popup-button">Customers</button>
+        <button onclick="window.location.href='account/admin/manage-shop-managers.php'" class="popup-button">Shop Managers</button>
+        <button onclick="window.location.href='account/admin/manage-regular-users.php'" class="popup-button">Customers</button>
     </div>
 </div>
 

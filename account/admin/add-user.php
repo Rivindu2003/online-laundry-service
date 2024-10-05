@@ -1,7 +1,14 @@
 <?php
 // Start the session
 session_start();
-include '../global-assets/db.php'; // Include your database connection
+include '../../global-assets/db.php'; // Include your database connection
+
+if (!isset($_SESSION['ses_admin_id'])) {
+    echo '<h1>Unauthorized Access</h1>';
+    echo '<p>You do not have permission to access this page.</p>';
+    echo '<p><a href="../../login-admin/login-admin.php">Click to login</a></p>';
+    exit;
+}
 
 // Initialize error message variables
 $usernameError = "";
@@ -86,13 +93,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New User/Manager</title>
-    <link rel="stylesheet" href="../global-assets/admin-sidebar.css">
-    <link rel="stylesheet" href="styles/add-user.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="../../css/admin-sidebar.css">
+    <link rel="stylesheet" href="../../css/add-user.css">
+    <script src="../../sweetalert/docs/assets/sweetalert/sweetalert.min.js"></script>
 </head>
 <body>
 
-    <?php $IPATH = "../global-assets/"; include($IPATH."admin-sidebar.html"); ?>
+    <?php $IPATH = "../../global-assets/"; include($IPATH."admin-sidebar.html"); ?>
 
     <div class="container">
         <h2>Add New User or Shop Manager</h2>
@@ -137,15 +144,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
     <script>
     <?php if ($successMessage): ?>
-            Swal.fire({
+            swal({
                 title: "Success!",
                 text: "<?php echo $successMessage; ?>",
                 icon: "success"
             }).then(function() {
-                window.location = "admin-panel.php"; // Redirect to admin panel after clicking OK
+                window.location = "../../admin-panel.php"; // Redirect to admin panel after clicking OK
             });
         <?php elseif ($failedMessage): ?>
-            Swal.fire({
+            swal({
                 title: "Error!",
                 text: "<?php echo $failedMessage; ?>",
                 icon: "error"
@@ -186,7 +193,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             });
         });
     </script>
-    <script src="js/address-field.js"></script>
+    <script src="../../js/address-field.js"></script>
 </body>
 </html>
 

@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($user && password_verify($password, $user['password_hash'])) {
         // Store necessary session data
-        $_SESSION['user_id'] = $user['admin_id'];
+        $_SESSION['ses_admin_id'] = $user['admin_id'];
         $_SESSION['username'] = $user['username'];
         $_SESSION['first_name'] = $user['first_name'];
         $_SESSION['last_name'] = $user['last_name'];
@@ -40,8 +40,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="styles/login-admin.css"> <!-- Make sure to link your CSS file -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="../css/login-admin.css"> 
+    <script src="../sweetalert/docs/assets/sweetalert/sweetalert.min.js"></script>
 </head>
 <body>
     <div class="login-container">
@@ -59,20 +59,20 @@ if ($successMessage) {
     // Use echo to add the script after the body has loaded
     echo "<script>
             window.onload = function() {
-                swal.fire({
+                swal({
                     title: 'Success!',
                     text: '$successMessage',
                     icon: 'success',
                     button: 'OK',
                 }).then(() => {
-                    window.location.href = 'admin-panel.php'; // Redirect after alert
+                    window.location.href = '../admin-panel.php'; // Redirect after alert
                 });
             };
           </script>";
 }else if ($failedMessage){
     echo "<script>
             window.onload = function() {
-                swal.fire({
+                swal({
                     title: 'Oops..!',
                     text: '$failedMessage',
                     icon: 'error',
