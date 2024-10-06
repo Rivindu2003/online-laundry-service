@@ -1,0 +1,37 @@
+body {
+    padding-top: 100px; /* Adjust this value based on the height of the header */
+}
+
+
+.container {
+    width: 50%;
+    margin: 50px auto; /* 50px space from top and bottom, auto for centering */
+    padding: 20px;
+    padding-top: 100px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h2 {
+    text-align: center;
+    color: #333;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+input, textarea, select {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+input[type="submit"] {
+    background-color: #003c9d;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+}
+input[type="submit"]:hover {
+    background-color: #030060;
+}
