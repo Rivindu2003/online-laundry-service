@@ -9,7 +9,6 @@ if (!isset($_SESSION['ses_admin_id'])) {
 
 include 'global-assets/db.php';
 
-// Get total users
 $user_query = "SELECT COUNT(*) AS total_users FROM users";
 $user_result = $connection->query($user_query);
 $user_data = $user_result->fetch_assoc();
@@ -35,7 +34,7 @@ $recent_orders_result = mysqli_query($connection, $recent_orders_query);
     <link rel="stylesheet" href="css/admin-panel.css">
 </head>
 <body>
-        <?php $IPATH = "global-assets/"; include($IPATH."admin-sidebar.html"); ?>
+        <?php $IPATH = "global-assets/"; include($IPATH."administrator-sidebar.html"); ?>
 
         <div class="dashboard-container">
         <!-- User Stats Section -->

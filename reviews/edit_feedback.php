@@ -1,10 +1,10 @@
 <?php
 session_start();
-include '../signup-logins-users/db.php'; // Include your database connection file
+include '../global-assets/db.php'; // Include your database connection file
 
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php"); // Redirect to login if not logged in
+    header("Location: ../login/login.php"); // Redirect to login if not logged in
     exit();
 }
 
@@ -56,12 +56,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Feedback</title>
     <link rel="stylesheet" href="styles/edit_feedback.css"> <!-- Link to CSS file -->
-    <link rel="stylesheet" href="../signup-logins-users/styles/header-footer-sidebar.css">
-    <link rel="stylesheet" href="../signup-logins-users/styles/position.css">
+    <link rel="stylesheet" href="../css/header-footer-sidebar.css">
+    <link rel="stylesheet" href="../css/position.css">
 </head>
 <body>
-<?php $IPATH = "../signup-logins-users/assets/"; include($IPATH."header.html"); ?>
-<?php $IPATH = "../signup-logins-users/assets/"; include($IPATH."sidebar.html"); ?>
+    <?php $IPATH = "../global-assets/"; include($IPATH."header.html"); ?>
+    <?php $IPATH = "../global-assets/"; include($IPATH."sidebar.html"); ?>
+
     <div class="container">
         <h1>Edit Your Feedback</h1>
         <form action="" method="POST">
@@ -71,6 +72,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <a href="manage-feedback.php" class="cancel-btn">Cancel</a>
         </form>
     </div>
-    <?php $IPATH = "../signup-logins-users/assets/"; include($IPATH."footer.html"); ?>
+    <?php $IPATH = "../global-assets/"; include($IPATH."footer.html"); ?>
 </body>
 </html>

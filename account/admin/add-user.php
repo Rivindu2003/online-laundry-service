@@ -99,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 
-    <?php $IPATH = "../../global-assets/"; include($IPATH."admin-sidebar.html"); ?>
+    <?php $IPATH = "../../global-assets/"; include($IPATH."administrator-sidebar.html"); ?>
 
     <div class="container">
         <h2>Add New User or Shop Manager</h2>

@@ -1,5 +1,21 @@
 <?php 
     session_start();
+
+    // Fetch reviews
+    include '../global-assets/db.php';
+
+    $sql = "SELECT review_id, user_name, review, review_date FROM reviews ORDER BY review_date DESC";
+    $result = $connection->query($sql);
+
+    $reviews = [];
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            $reviews[] = $row;
+        }
+    }
+    
+    $connection->close();
+
 ?>
 
 <!--doctype html-->
@@ -26,57 +42,51 @@
         const loggedIn = <?php echo isset($_SESSION['username']) ? 'true' : 'false'; ?>;
         const currentUserId = <?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 'null'; ?>;
     </script>
-    <link rel="stylesheet" href="../signup-logins-users/styles/header-footer-sidebar.css">
+    <link rel="stylesheet" href="../css/home-footer-header.css">
 </head>
 <body>
     <!--Testimonials Section-->
-    <?php $IPATH = "../signup-logins-users/assets/"; include($IPATH."header.html"); ?>
+    <?php $IPATH = "../global-assets/"; include($IPATH."header-home.html"); ?>
 
     <section id="testimonials">
         <div class="testimonial-heading">
             <h1>What Our Clients Say</h1>
         </div>
         <div class="testimonial-box-container" id="review-container">
-            <!-- Reviews will be injected here dynamically -->
+        <?php 
+        // Check if there are reviews to display
+        if (!empty($reviews)) {
+            foreach ($reviews as $review) { 
+        ?>
+                <div class="testimonial-box">
+                    <div class="box-top">
+                        <div class="profile">
+                            <div class="profile-img">
+                                <img src="images/profile-user.png" alt="Profile Image"/>
+                            </div>
+                            <div class="name-user">
+                                <strong><?php echo htmlspecialchars($review['user_name']); ?></strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="client-comment">
+                        <p><?php echo htmlspecialchars($review['review']); ?></p>
+                    </div>
+                    <div class="review-date"><?php echo htmlspecialchars($review['review_date']); ?></div>
+                </div>
+        <?php 
+            } 
+        } else {
+            echo "<p>No reviews available.</p>"; // Message if no reviews are found
+        }
+        ?>
         </div>
         <button id="writeReviewBtn">Write Your Review</button>
     </section>
 
-    <?php $IPATH = "../signup-logins-users/assets/"; include($IPATH."footer.html"); ?>
+    <?php $IPATH = "../global-assets/"; include($IPATH."footer-home.html"); ?>
 
     <script>
-        // Fetch reviews from the database using AJAX
-        function fetchReviews() {
-            fetch('fetch_reviews.php') // Replace with your PHP script
-                .then(response => response.json())
-                .then(data => {
-                    const reviewContainer = document.getElementById('review-container');
-                    reviewContainer.innerHTML = ''; // Clear previous reviews
-
-                    data.forEach(review => {
-                        reviewContainer.innerHTML += `
-                            <div class="testimonial-box">
-                                <div class="box-top">
-                                    <div class="profile">
-                                        <div class="profile-img">
-                                            <img src="images/profile-user.png" alt="Profile Image"/>
-                                        </div>
-                                        <div class="name-user">
-                                            <strong>${review.user_name}</strong>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="client-comment">
-                                    <p>${review.review}</p>
-                                </div>
-                                <div class="review-date">${review.review_date}</div>
-                            </div>
-                        `;
-                    });
-                })
-                .catch(error => console.error('Error fetching reviews:', error));
-        }
-
         // Event listener for the Write Your Review button
         document.getElementById('writeReviewBtn').addEventListener('click', () => {
             if (loggedIn) {
@@ -89,7 +99,7 @@
                     confirmButtonText: "Login",
                     closeOnConfirm: false
                 }, function() {
-                    window.location.href = '../signup-logins-users/login.php'; // Redirect to login page
+                    window.location.href = '../login/login.php'; // Redirect to login page
                 });
             }
         });

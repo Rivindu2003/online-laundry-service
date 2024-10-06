@@ -14,6 +14,7 @@ $userQuery = $connection->prepare("SELECT first_name, last_name, phone_number FR
 if ($userQuery === false) {
     die("Error preparing statement: " . $connection->error); // This will print the MySQL error
 }
+
 $userQuery->bind_param("i", $user_id);
 $userQuery->execute();
 $userResult = $userQuery->get_result();
@@ -50,7 +51,7 @@ $totalPrice = 0;
     <link rel="stylesheet" href="../../css/view-order.css">
     <link rel="stylesheet" href="../../css/header-footer-sidebar.css">
     <link rel="stylesheet" href="../../css/position.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../../sweetalert/docs/assets/sweetalert/sweetalert.min.js"></script>
     <script>
 
         // Function to toggle edit fields for delivery date and address
@@ -88,16 +89,28 @@ $totalPrice = 0;
         }
 
         function cancelOrder() {
-    Swal.fire({
+    swal({
         title: "Are you sure?",
-        text: "You won't be able to revert this! this will delete order",
+        text: "You won't be able to revert this! This will delete the order.",
         icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, cancel & Cancel it!"
-    }).then((result) => {
-        if (result.isConfirmed) {
+        buttons: {
+            cancel: {
+                text: "No, keep it",
+                value: null,
+                visible: true,
+                className: "btn-danger",
+                closeModal: true,
+            },
+            confirm: {
+                text: "Yes, cancel it!",
+                value: true,
+                visible: true,
+                className: "btn-primary",
+                closeModal: false
+            }
+        }
+    }).then((willDelete) => {
+        if (willDelete) {
             // Make an AJAX call to cancel the order
             fetch('delete_order_customer.php', {
                 method: 'POST',
@@ -111,23 +124,19 @@ $totalPrice = 0;
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    Swal.fire({
-                        title: "Canceled!",
-                        text: "Your order has been canceled.",
-                        icon: "success"
-                    }).then(() => {
+                    swal("Canceled!", "Your order has been canceled.", "success")
+                    .then(() => {
                         // Redirect to the user panel after cancellation
                         window.location.href = 'user-panel.php';
                     });
                 } else {
-                    Swal.fire({
-                        title: "Error!",
-                        text: "There was a problem canceling your order.",
-                        icon: "error"
-                    });
+                    swal("Error!", "There was a problem canceling your order.", "error");
                 }
             })
-            .catch(error => console.error('Error:', error));
+            .catch(error => {
+                console.error('Error:', error);
+                swal("Error!", "An unexpected error occurred.", "error");
+            });
         }
     });
 }

@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="../css/signup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../sweetalert/docs/assets/sweetalert/sweetalert.min.js"></script>
 </head>
 <body>
 
@@ -87,7 +87,7 @@ if ($successMessage) {
     // Use echo to add the script after the body has loaded
     echo "<script>
             window.onload = function() {
-                swal.fire({
+                swal({
                     title: 'Success!',
                     text: '$successMessage',
                     icon: 'success',
@@ -100,7 +100,7 @@ if ($successMessage) {
 }elseif ($errorMessage_email){
     echo "<script>
             window.onload = function() {
-                swal.fire({
+                swal({
                     title: 'Error!',
                     text: '$errorMessage_email',
                     icon: 'error',
@@ -115,7 +115,7 @@ if ($successMessage) {
 elseif ($errorMessage_username){
     echo "<script>
             window.onload = function() {
-                swal.fire({
+                swal({
                     title: 'Error!',
                     text: '$errorMessage_username',
                     icon: 'error',

@@ -40,6 +40,7 @@ if ($result->num_rows > 0) {
     <link rel="stylesheet" href="../../css/header-footer-sidebar.css">
     <link rel="stylesheet" href="../../css/user-details.css">
     <link rel="stylesheet" href="../../css/position.css">
+    <script src="../../sweetalert/docs/assets/sweetalert/sweetalert.min.js"></script>
 </head>
 <body>
    <?php $IPATH = "../../global-assets/"; include($IPATH."header.html"); ?>
@@ -61,29 +62,29 @@ if ($result->num_rows > 0) {
             <form id="user-form">
                 <div class="detail-item">
                     <label>First Name</label>
-                    <p class="editable-text" id="first-name"><?php echo htmlspecialchars($user['first_name']); ?></p>
-                    <input type="text" class="editable-input" id="first-name-input" value="<?php echo htmlspecialchars($user['username']); ?>" style="display:none;">
+                    <p class="editable-text" id="first-name"><?php echo htmlspecialchars($user['first_name'] ?? ''); ?></p>
+                    <input type="text" class="editable-input" id="first-name-input" value="<?php echo htmlspecialchars($user['first_name'] ?? ''); ?>" style="display:none;">
                 </div>
                 <div class="detail-item">
                     <label>Last Name</label>
-                    <p class="editable-text" id="last-name"><?php echo htmlspecialchars($user['last_name']); ?></p>
-                    <input type="text" class="editable-input" id="last-name-input" value="<?php echo htmlspecialchars($user['username']); ?>" style="display:none;">
+                    <p class="editable-text" id="last-name"><?php echo htmlspecialchars($user['last_name']  ?? ''); ?></p>
+                    <input type="text" class="editable-input" id="last-name-input" value="<?php echo htmlspecialchars($user['last_name'] ?? ''); ?>" style="display:none;">
                 </div>
                 <div class="detail-item">
                     <label>Email</label>
-                    <p class="editable-text" id="email"><?php echo htmlspecialchars($user['email']); ?></p>
-                    <input type="email" class="editable-input" id="email-input" value="<?php echo htmlspecialchars($user['email']); ?>" style="display:none;">
+                    <p class="editable-text" id="email"><?php echo htmlspecialchars($user['email'] ?? ''); ?></p>
+                    <input type="email" class="editable-input" id="email-input" value="<?php echo htmlspecialchars($user['email'] ?? ''); ?>" style="display:none;">
                 </div>
                 <div class="detail-item">
                     <label>Phone</label>
-                    <p class="editable-text" id="phone"><?php echo htmlspecialchars($user['phone_number']); ?></p>
-                    <input type="text" class="editable-input" id="phone-input" value="<?php echo htmlspecialchars($user['phone_number']); ?>" style="display:none;">
+                    <p class="editable-text" id="phone"><?php echo htmlspecialchars($user['phone_number'] ?? ''); ?></p>
+                    <input type="text" class="editable-input" id="phone-input" value="<?php echo htmlspecialchars($user['phone_number'] ?? ''); ?>" style="display:none;">
                 </div>
                 
                 <div class="detail-item">
                     <label>Address</label>
-                    <p class="editable-text" id="address"><?php echo htmlspecialchars($user['address']); ?></p>
-                    <input type="text" class="editable-input" id="address-input" value="<?php echo htmlspecialchars($user['address']); ?>" style="display:none;">
+                    <p class="editable-text" id="address"><?php echo htmlspecialchars($user['address'] ?? ''); ?></p>
+                    <input type="text" class="editable-input" id="address-input" value="<?php echo htmlspecialchars($user['address'] ?? ''); ?>" style="display:none;">
                 </div>
                 <button type="button" id="edit-btn">Edit</button>
                 <button type="button" id="delete-btn">Delete User Account</button>
@@ -96,4 +97,3 @@ if ($result->num_rows > 0) {
     <script src="../../js/user_details.js"></script>
 </body>
 </html>
-

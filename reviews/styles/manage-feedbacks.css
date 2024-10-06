@@ -1,14 +1,10 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-}
 
 .container {
-    max-width: 800px;
-    margin: auto;
+    max-width: 900px;
     background: white;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    margin-left: 100px;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -49,4 +45,25 @@ table th {
 .delete-btn {
     background-color: #f44336; /* Red */
     color: white;
+}
+
+.create-review-btn {
+    background-color: #004B90; /* Main button color */
+    color: #eaeaea; /* Text color */
+    font-size: 16px; /* Font size */
+    padding: 12px 20px; /* Padding for better click area */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.3s; /* Transition effects */
+    margin-bottom: 20px; /* Space below the button */
+}
+
+.create-review-btn:hover {
+    background-color: #d70000; /* Change color on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.create-review-btn:focus {
+    outline: none; /* Remove focus outline */
 }

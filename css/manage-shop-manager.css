@@ -43,6 +43,16 @@ th {
     transition: background-color 0.3s; /* Smooth transition */
 }
 
+.reset-password-btn {
+    background-color: #b00f0f; /* Green background for buttons */
+    color: white; /* White text */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 8px 12px; /* Button padding */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
 .manage-btn:hover {
     background-color: #218838; /* Darker green on hover */
 }

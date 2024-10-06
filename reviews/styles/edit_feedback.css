@@ -1,13 +1,9 @@
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f2f5;
-    margin: 0;
-    padding: 20px;
-}
-
 .container {
     max-width: 600px;
     margin: auto;
+    margin-left: 100px;
+    margin-top: 50px;
+    margin-bottom: 30px;
     background: #ffffff;
     padding: 30px;
     border-radius: 8px;

@@ -70,7 +70,7 @@ if (isset($_POST['delete_user'])) {
     <script src="../../sweetalert/docs/assets/sweetalert/sweetalert.min.js"></script>
 </head>
 <body>
-    <?php $IPATH = "../../global-assets/"; include($IPATH . "admin-sidebar.html"); ?>
+    <?php $IPATH = "../../global-assets/"; include($IPATH . "administrator-sidebar.html"); ?>
     
     <div class="edit-user-container">
         <h1>Edit User Details</h1>
