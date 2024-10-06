@@ -42,11 +42,11 @@
         const loggedIn = <?php echo isset($_SESSION['username']) ? 'true' : 'false'; ?>;
         const currentUserId = <?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 'null'; ?>;
     </script>
-    <link rel="stylesheet" href="../css/header-footer-sidebar.css">
+    <link rel="stylesheet" href="../css/home-footer-header.css">
 </head>
 <body>
     <!--Testimonials Section-->
-    <?php $IPATH = "../global-assets/"; include($IPATH."header.html"); ?>
+    <?php $IPATH = "../global-assets/"; include($IPATH."header-home.html"); ?>
 
     <section id="testimonials">
         <div class="testimonial-heading">
@@ -84,7 +84,7 @@
         <button id="writeReviewBtn">Write Your Review</button>
     </section>
 
-    <?php $IPATH = "../global-assets/"; include($IPATH."footer.html"); ?>
+    <?php $IPATH = "../global-assets/"; include($IPATH."footer-home.html"); ?>
 
     <script>
         // Event listener for the Write Your Review button
