@@ -1,17 +1,17 @@
 body {
-    position: relative; /* Set relative positioning for the body */
+    position: relative; 
 }
 
 .sidebar {
-    position: absolute; /* Position sidebar absolutely */
-    left: 0; /* Align to the left */
-    width: 250px; /* Adjust width as needed */
-    /* Additional styles for sidebar */
+    position: absolute; 
+    left: 0; 
+    width: 250px; 
+    
 }
 
 .container {
-    margin-left: 260px; /* Adjust margin to prevent overlap */
-    padding: 20px; /* Add padding as needed */
+    margin-left: 260px; 
+    padding: 20px; 
 }
 
 .order-section {

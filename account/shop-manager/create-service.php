@@ -5,32 +5,25 @@ include '../../global-assets/db.php';
 $message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Retrieve data from POST request
-    $serviceName = $_POST['serviceName'];
+        $serviceName = $_POST['serviceName'];
     $description = $_POST['description'];
     $servicePrice = $_POST['servicePrice'];
 
-    // Validate and sanitize inputs (you can extend this)
-    if (!empty($serviceName) && !empty($servicePrice)) {
-        // Prepare and bind the SQL statement
-        $stmt = $connection->prepare("INSERT INTO services (service_name, description, price) VALUES (?, ?, ?)");
-        $stmt->bind_param("ssd", $serviceName, $description, $servicePrice); // "ssd" - s for string, d for double (price)
-
-        // Execute the query and handle success/failure
-        if ($stmt->execute()) {
+        if (!empty($serviceName) && !empty($servicePrice)) {
+                $stmt = $connection->prepare("INSERT INTO services (service_name, description, price) VALUES (?, ?, ?)");
+        $stmt->bind_param("ssd", $serviceName, $description, $servicePrice); 
+                if ($stmt->execute()) {
             $message = "Service created successfully!";
         } else {
             $message = "Error: " . $stmt->error;
         }
 
-        // Close the statement
-        $stmt->close();
+                $stmt->close();
     } else {
         $message = "Please fill in all required fields.";
     }
 
-    // Close the connection
-    $connection->close();
+        $connection->close();
 }
 ?>
 
@@ -65,8 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 <?php
         if ($message) {
-            // Use echo to add the script after the body has loaded
-            echo "<script>
+                        echo "<script>
                     window.onload = function() {
                         swal({
                             title: 'Success!',
@@ -74,8 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             icon: 'success',
                             button: 'OK',
                         }).then(() => {
-                            window.location.href = '../../shop-manager.php'; // Redirect after alert
-                        });
+                            window.location.href = '../../shop-manager.php';                         });
                     };
                 </script>";
         }

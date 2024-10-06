@@ -2,13 +2,11 @@
 session_start();
 include('../../global-assets/db.php');
 
-// Redirect if not logged in
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit;
 }
 
-// Fetch services from the database
 $servicesQuery = $connection->query("SELECT service_id, service_name, price FROM services");
 $services = $servicesQuery->fetch_all(MYSQLI_ASSOC);
 ?>
@@ -72,7 +70,6 @@ $services = $servicesQuery->fetch_all(MYSQLI_ASSOC);
                 const serviceName = serviceItem.querySelector('span').innerText;
                 const price = parseFloat(serviceItem.getAttribute('data-price'));
 
-                // Add service to the selected list
                 const existingService = selectedServices.find(service => service.service_id === serviceId);
                 if (!existingService) {
                     selectedServices.push({ service_id: serviceId, service_name: serviceName, quantity: 1, price: price });
@@ -102,7 +99,7 @@ $services = $servicesQuery->fetch_all(MYSQLI_ASSOC);
 
             document.getElementById('total-amount').innerText = totalAmount.toFixed(2);
 
-            // Add event listeners for quantity changes and removal
+          
             document.querySelectorAll('.quantity-input').forEach(input => {
                 input.addEventListener('input', function() {
                     const index = this.getAttribute('data-index');
@@ -148,10 +145,9 @@ $services = $servicesQuery->fetch_all(MYSQLI_ASSOC);
                         title: "Order Created!",
                         text: "Your order is created and we're processing it",
                         icon: "success",
-                        showConfirmButton: false,  // Hide the confirm button
-                        timer: 3500,  // Close after 10 seconds (10000 ms)
+                        showConfirmButton: false,  
+                        timer: 3500, 
                         willClose: () => {
-    // Redirect to user-profile.php after SweetAlert closes
                     window.location.href = 'user-panel.php';
                 }
             });

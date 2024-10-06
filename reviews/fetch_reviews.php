@@ -1,5 +1,5 @@
 <?php
-// Fetch reviews
+
 include '../signup-logins-users/db.php';
 
 session_start();

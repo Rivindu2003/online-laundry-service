@@ -1,4 +1,4 @@
-/* General Styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -11,10 +11,10 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(to bottom, #4dd0e1, #b2fbd1);
+    background: linear-gradient(to bottom, #110029, #060055);
 }
 
-/* Form Container */
+
 .login-container {
     background-color: #ffffff;
     padding: 40px;
@@ -32,7 +32,7 @@ body {
     font-weight: 600;
 }
 
-/* Input Styles */
+
 .login-container input {
     width: 100%;
     padding: 12px;
@@ -48,7 +48,7 @@ body {
     border-color: #007BFF;
 }
 
-/* Button Styles */
+
 .login-container button {
     width: 100%;
     padding: 12px;
@@ -79,9 +79,21 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Responsive Media Query */
+
 @media (max-width: 768px) {
     .login-container {
         padding: 20px;
     }
+}
+
+.image-container {
+    display: flex;                
+    justify-content: center;      
+    align-items: center;          
+             
+}
+
+.logo {
+    width: 150px;                
+    height: auto;                
 }

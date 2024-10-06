@@ -1,5 +1,5 @@
 function editFeedback(id) {
-    // Redirect to the edit feedback page with the feedback ID
+    
     window.location.href = `edit_feedback.php?id=${id}`;
 }
 

@@ -28,7 +28,7 @@ h1 {
 }
 
 .service-item button, .selected-item button {
-    background-color: #4CAF50;
+    background-color: #0008e6;
     color: white;
     border: none;
     padding: 5px;
@@ -60,7 +60,7 @@ h1 {
 
 .form-inputs input[type="submit"] {
     width: auto;
-    background-color: #4CAF50;
+    background-color: #0008e6;
     color: white;
     border: none;
     cursor: pointer;

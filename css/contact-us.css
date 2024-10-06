@@ -1,11 +1,11 @@
 body {
-    padding-top: 100px; /* Adjust this value based on the height of the header */
+    padding-top: 100px; 
 }
 
 
 .container {
     width: 50%;
-    margin: 50px auto; /* 50px space from top and bottom, auto for centering */
+    margin: 50px auto; 
     padding: 20px;
     padding-top: 100px;
     background-color: #fff;

@@ -10,12 +10,10 @@ if (!isset($_SESSION['ses_admin_id'])) {
 
 include '../../global-assets/db.php';
 
-// Get username from query string
 if (isset($_GET['username'])) {
     $username = htmlspecialchars($_GET['username']);
 
-    // Fetch user details from the database
-    $query = "SELECT * FROM users WHERE username = ?";
+        $query = "SELECT * FROM users WHERE username = ?";
     $stmt = $connection->prepare($query);
     $stmt->bind_param("s", $username);
     $stmt->execute();
@@ -30,15 +28,13 @@ if (isset($_GET['username'])) {
     die("Username not provided.");
 }
 
-// Handle update user request
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
     $email = $_POST['email'];
     $phone_number = $_POST['phone_number'];
 
-    // Update user details
-    $update_query = "UPDATE users SET first_name = ?, last_name = ?, email = ?, phone_number = ? WHERE username = ?";
+        $update_query = "UPDATE users SET first_name = ?, last_name = ?, email = ?, phone_number = ? WHERE username = ?";
     $update_stmt = $connection->prepare($update_query);
     $update_stmt->bind_param("sssss", $first_name, $last_name, $email, $phone_number, $username);
     $update_stmt->execute();
@@ -47,7 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             window.location.href = 'manage-regular-users.php';</script>";
 }
 
-// Handle delete user request
 if (isset($_POST['delete_user'])) {
     $delete_query = "DELETE FROM users WHERE username = ?";
     $delete_stmt = $connection->prepare($delete_query);
@@ -103,13 +98,11 @@ if (isset($_POST['delete_user'])) {
 <style>
     .edit-user-container {
         width: 50%;
-        margin: 0 auto; /* Center the form */
-        padding: 20px;
+        margin: 0 auto;         padding: 20px;
         border: 1px solid #ddd;
         border-radius: 8px;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        background-color: #fff; /* White background */
-    }
+        background-color: #fff;     }
 
     h1 {
         text-align: center;
@@ -132,20 +125,17 @@ if (isset($_POST['delete_user'])) {
 
     .button-group {
         display: flex;
-        justify-content: space-around; /* Space buttons evenly */
-    }
+        justify-content: space-around;     }
 
     button {
         padding: 10px 15px;
         border: none;
         border-radius: 5px;
         cursor: pointer;
-        background-color: #007BFF; /* Primary color */
-        color: white;
+        background-color: #007BFF;         color: white;
         transition: background-color 0.3s;
     }
 
     button:hover {
-        background-color: #0056b3; /* Darker shade on hover */
-    }
+        background-color: #0056b3;     }
 </style>

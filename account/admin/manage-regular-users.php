@@ -1,8 +1,6 @@
 <?php
-// Start the session
 session_start();
-include '../../global-assets/db.php'; // Include your database connection
-
+include '../../global-assets/db.php'; 
 if (!isset($_SESSION['ses_admin_id'])) {
     echo '<h1>Unauthorized Access</h1>';
     echo '<p>You do not have permission to access this page.</p>';
@@ -10,10 +8,8 @@ if (!isset($_SESSION['ses_admin_id'])) {
     exit;
 }
 
-// Initialize filter variable
 $filter = isset($_GET['user_type']) ? $_GET['user_type'] : 'all';
 
-// Fetch users based on filter
 $usersQuery = "SELECT created_at , first_name, last_name, phone_number, email, username FROM users";
 
 $result = mysqli_query($connection, $usersQuery);
@@ -68,16 +64,12 @@ $result = mysqli_query($connection, $usersQuery);
 
     <script>
         function manageUser(username) {
-            // Redirect to manage user page or modal for further actions
-            alert("Manage user: " + username);
-            // You can replace the alert with a redirect or a modal call
-            // window.location.href = "edit-user.php?username=" + username;
-        }
+                        alert("Manage user: " + username);
+                                }
 
         function resetPassword(username) {
         if (confirm('Are you sure you want to reset the password for ' + username + '? This action cannot be undone.')) {
-            // Redirect to the reset password PHP script
-            window.location.href = 'reset-password.php?username=' + encodeURIComponent(username);
+                        window.location.href = 'reset-password.php?username=' + encodeURIComponent(username);
         }
     }
     </script>

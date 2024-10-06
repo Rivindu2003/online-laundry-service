@@ -8,17 +8,17 @@ if (!isset($_SESSION['shop_manager_id'])) {
 }
 
 try {
-    // Fetch services from the database
+    
     $sql = "SELECT service_id, service_name, price FROM services";
     $stmt = $connection->prepare($sql);
 
-    // Execute the statement
+    
     $stmt->execute();
 
-    // Bind result variables
+    
     $stmt->bind_result($service_id, $service_name, $price);
 
-    // Fetch the results
+    
     $services = [];
     while ($stmt->fetch()) {
         $services[] = [
@@ -28,7 +28,7 @@ try {
         ];
     }
 
-    // Close the statement
+    
     $stmt->close();
 
     $sql = "SELECT ticket_id, customer_name, subject, submission_date, status FROM support_shop";
@@ -36,7 +36,7 @@ try {
     $stmt->execute();
     $stmt->bind_result($ticket_id, $customer_name, $subject, $submission_date, $status);
 
-    // Fetch the support requests
+    
     $support_requests = [];
     while ($stmt->fetch()) {
         $support_requests[] = [
@@ -54,38 +54,38 @@ try {
 }
 
 
-// Check if the form is submitted
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get ticket ID and new status from the POST request
+    
     $ticket_id = $_POST['ticket_id'];
     $new_status = $_POST['status'];
 
     try {
-        // Prepare the SQL statement
+        
         $sql = "UPDATE support_shop SET status = ? WHERE ticket_id = ?";
         $stmt = $connection->prepare($sql);
         
-        // Bind parameters
+        
         $stmt->bind_param("si", $new_status, $ticket_id);
         
-        // Execute the statement
+        
         if ($stmt->execute()) {
-            // Return a success response
+            
             header('Location: shop-manager.php');
             exit;
         } else {
-            // Return an error response
+            
             echo json_encode(['success' => false, 'error' => 'Failed to update status.']);
         }
 
-        // Close the statement
+        
         $stmt->close();
     } catch (mysqli_sql_exception $e) {
-        // Return an error response
+        
         echo json_encode(['success' => false, 'error' => $e->getMessage()]);
     }
 
-    // Exit to prevent further execution of the script
+    
     exit;
 }
 
@@ -196,7 +196,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
         <script>
-        // JavaScript to handle modal
+        
         function openModal(request) {
             document.getElementById("modal-ticket-id").value = request.ticket_id;
             document.getElementById("modal-customer-name").innerText = request.customer_name;
@@ -209,7 +209,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             document.getElementById("myModal").style.display = "none";
         }
 
-        // Close modal when clicking outside of it
+        
         window.onclick = function(event) {
             const modal = document.getElementById("myModal");
             if (event.target === modal) {

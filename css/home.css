@@ -134,11 +134,11 @@
 
 .order-section p {
     text-align: left;               
-    margin-bottom: 50px;           /* Space below the paragraph */
+    margin-bottom: 50px;           
 }
 
 .order-content {
-    margin-bottom: 20px;           /* Space below the button */
+    margin-bottom: 20px;           
 }
 
 .order-button {
@@ -152,11 +152,11 @@
 }
 
 .order-button:hover {
-    background-color: #00376b;    /* Darker blue on hover */
+    background-color: #00376b;    
 }
 
 .order-image img {
-    width: 400px;                /* Adjust image width as needed */
+    width: 400px;                
     height: auto;                
     object-fit: cover;           
     border-radius: 8px;          

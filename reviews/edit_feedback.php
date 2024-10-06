@@ -1,10 +1,10 @@
 <?php
 session_start();
-include '../global-assets/db.php'; // Include your database connection file
+include '../global-assets/db.php'; 
 
-// Check if user is logged in
+
 if (!isset($_SESSION['user_id'])) {
-    header("Location: ../login/login.php"); // Redirect to login if not logged in
+    header("Location: ../login/login.php"); 
     exit();
 }
 
@@ -13,7 +13,7 @@ $user_id = $_SESSION['user_id'];
 if (isset($_GET['id'])) {
     $feedback_id = intval($_GET['id']);
 
-    // Fetch the feedback details from the database
+    
     $sql = "SELECT * FROM reviews WHERE review_id = ? AND user_id = ?";
     $stmt = $connection->prepare($sql);
     $stmt->bind_param("ii", $feedback_id, $user_id);
@@ -31,17 +31,17 @@ if (isset($_GET['id'])) {
     exit();
 }
 
-// Handle form submission
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $updated_feedback = trim($_POST['feedback']);
 
-    // Update the feedback in the database
+    
     $sql = "UPDATE reviews SET review = ? WHERE review_id = ? AND user_id = ?";
     $stmt = $connection->prepare($sql);
     $stmt->bind_param("sii", $updated_feedback, $feedback_id, $user_id);
     
     if ($stmt->execute()) {
-        header("Location: manage-feedback.php"); // Redirect back to the feedback manager
+        header("Location: manage-feedback.php"); 
         exit();
     } else {
         echo "Error updating feedback. Please try again.";
@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Feedback</title>
-    <link rel="stylesheet" href="styles/edit_feedback.css"> <!-- Link to CSS file -->
+    <link rel="stylesheet" href="styles/edit_feedback.css"> 
     <link rel="stylesheet" href="../css/header-footer-sidebar.css">
     <link rel="stylesheet" href="../css/position.css">
 </head>

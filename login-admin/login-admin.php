@@ -9,15 +9,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Prepare SQL statement to prevent SQL injection
+    
     $stmt = $connection->prepare("SELECT admin_id, username, password_hash, first_name, last_name, email FROM website_administrators WHERE username = ?");
-    $stmt->bind_param("s", $username); // "s" means string type
+    $stmt->bind_param("s", $username); 
     $stmt->execute();
     $result = $stmt->get_result();
     $user = $result->fetch_assoc();
 
     if ($user && password_verify($password, $user['password_hash'])) {
-        // Store necessary session data
+        
         $_SESSION['ses_admin_id'] = $user['admin_id'];
         $_SESSION['username'] = $user['username'];
         $_SESSION['first_name'] = $user['first_name'];
@@ -45,18 +45,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <div class="login-container">
-        <h2>Administrator LOGIN</h2>
+        <div class="image-container">
+            <img src="../images/logo-black.png" alt="Logo" class="logo">
+        </div>
+        <h2>Administrator Login</h2>
         <form method="POST" action="">
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
             <button type="submit">Login</button>
-            <p>Don't have a account? <span><a href="signup.php">Sign Up Now</a></span></p>
         </form>
     </div>
 
     <?php
 if ($successMessage) {
-    // Use echo to add the script after the body has loaded
+    
     echo "<script>
             window.onload = function() {
                 swal({
@@ -65,7 +67,7 @@ if ($successMessage) {
                     icon: 'success',
                     button: 'OK',
                 }).then(() => {
-                    window.location.href = '../admin-panel.php'; // Redirect after alert
+                    window.location.href = '../admin-panel.php'; 
                 });
             };
           </script>";
@@ -78,7 +80,7 @@ if ($successMessage) {
                     icon: 'error',
                     button: 'OK',
                 }).then(() => {
-                    window.location.href = 'login-admin.php'; // Redirect after alert
+                    window.location.href = 'login-admin.php'; 
                 });
             };
           </script>";
