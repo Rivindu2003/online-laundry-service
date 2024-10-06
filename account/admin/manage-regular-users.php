@@ -54,6 +54,7 @@ $result = mysqli_query($connection, $usersQuery);
                         <td><?php echo htmlspecialchars('USER'); ?></td> 
                         <td>
                         <button class="manage-btn" onclick="window.location.href='edit-user-customer.php?username=<?php echo urlencode(htmlspecialchars($user['username'])); ?>'">Edit</button>
+                        <button class="reset-password-btn" onclick="resetPassword('<?php echo htmlspecialchars($user['username']); ?>')">Reset Password</button>
                         </td>
                     </tr>
                 <?php endwhile; ?>
@@ -72,6 +73,13 @@ $result = mysqli_query($connection, $usersQuery);
             // You can replace the alert with a redirect or a modal call
             // window.location.href = "edit-user.php?username=" + username;
         }
+
+        function resetPassword(username) {
+        if (confirm('Are you sure you want to reset the password for ' + username + '? This action cannot be undone.')) {
+            // Redirect to the reset password PHP script
+            window.location.href = 'reset-password.php?username=' + encodeURIComponent(username);
+        }
+    }
     </script>
 </body>
 </html>
