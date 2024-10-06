@@ -12,6 +12,12 @@ body {
     transition: all 0.3s ease; /* Smooth transition on resizing */
 }
 
+.support-request {
+    margin-left: 290px; /* This should match the width of the sidebar */
+    padding: 20px;
+    transition: all 0.3s ease; /* Smooth transition on resizing */
+}
+
 /* Table Styling */
 table {
     width: 100%;
@@ -30,7 +36,7 @@ table th, table td {
 }
 
 table th {
-    background-color: #4CAF50;
+    background-color: #5c4caf;
     color: white;
 }
 
@@ -43,7 +49,19 @@ table td {
     display: inline-block;
     padding: 10px 15px;
     color: white;
-    background-color: #28a745;
+    background-color: #0c00b9;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.request-btn {
+    display: inline-block;
+    padding: 10px 15px;
+    color: white;
+    background-color: #0c00b9;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -52,7 +70,7 @@ table td {
 }
 
 .btn:hover {
-    background-color: #218838;
+    background-color: #01136c;
 }
 
 /* Create Button */
@@ -69,4 +87,59 @@ table td {
 
 .create-btn:hover {
     background-color: #0056b3;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+.form-group button {
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.form-group button:hover {
+    background-color: #218838;
 }
