@@ -15,7 +15,7 @@
             <h1>Welcome to Bubble Shine</h1>
             <h3>Your Premier Laundry Service</h3>
             <p>Experience the magic of effortless laundry with Bubble Shine! We take the hassle out of washing, drying, and folding, delivering pristine clothes right to your doorstep. Enjoy our express services, eco-friendly practices, and exceptional customer care—all designed to make your life easier and your clothes shine brighter.</p>
-            <a href="/our-services" class="button">
+            <a href="/home/about-us.php" class="button">
                 <button type="button">Book Now!</button>
             </a>
         </div>
@@ -64,20 +64,6 @@
                 <p>Experience Peace of Mind with Our Secure Online Payment Gateway</p>
             </div>
         </div>
-
-        <section class="order-section">
-            <div class="order-text">
-                <p>
-                    Our eco-friendly practices ensure your clothes are cleaned with care, while our express delivery guarantees you never have to wait long to enjoy freshly laundered items. With a dedicated customer support team ready to assist you and a commitment to discreet packaging, we make laundry effortless and enjoyable. Experience the difference with Bubble Shine—where your satisfaction is our top priority!
-                </p>
-                <div class="order-content">
-                    <a href="/order" class="order-button">Order Now</a>
-                </div>
-            </div>
-            <div class="order-image">
-                <img src="images/laundry-image.jpg" alt="Order Image">
-            </div>
-        </section>
         
         <?php $IPATH = "global-assets/"; include($IPATH."footer-home.html"); ?>
 </body>
