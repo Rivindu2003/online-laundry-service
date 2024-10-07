@@ -61,12 +61,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php $IPATH = "../global-assets/"; include($IPATH."header.html"); ?>
         <?php $IPATH = "../global-assets/"; include($IPATH."sidebar.html"); ?>
 
-
 <div class="form-container"> 
         <h1>Write Your Review</h1>
         <form method="POST" action="">
-            <input type="text" name="name" placeholder="Your Name" value="<?php echo $fullName ?>" required>
-     
+            <input type="text" id="name" name="name" value="<?php echo $fullName; ?>" readonly>
             <textarea name="comment" placeholder="Your Comment" required></textarea>
             <button type="submit">Submit Review</button>
         </form>

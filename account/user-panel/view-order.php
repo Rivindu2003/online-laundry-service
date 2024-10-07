@@ -54,12 +54,10 @@ $totalPrice = 0;
     <script src="../../sweetalert/docs/assets/sweetalert/sweetalert.min.js"></script>
     <script>
 
-        
-        
-            function enableEdit() {
-                document.getElementById('address').disabled = false;
-                document.getElementById('save-btn').style.display = 'inline-block';
-            }
+        function enableEdit() {
+            document.getElementById('address').disabled = false;
+            document.getElementById('save-btn').style.display = 'inline-block';
+        }
 
 
         function saveDetails() {
@@ -151,12 +149,11 @@ $totalPrice = 0;
         <?php $IPATH = "../../global-assets/"; include($IPATH."sidebar.html"); ?>
 
     <div class="order-container">
-        <!-- Display Order ID and User Information -->
+
         <h1>Order #BB_0<?php echo $order['order_id']; ?></h1>
         <p><strong>Full Name:</strong> <?php echo $user['first_name'] . ' ' . $user['last_name']; ?></p>
         <p><strong>Phone Number:</strong> <?php echo $user['phone_number']; ?></p>
 
-        <!-- Display Service Orders in a Table -->
         <table>
             <thead>
                 <tr>
@@ -179,17 +176,14 @@ $totalPrice = 0;
             </tbody>
         </table>
 
-        <!-- Total Price -->
         <p><strong>Total Price:</strong> LKR <?php echo number_format($totalPrice, 2); ?></p>
 
-        <!-- Display Address and Delivery Date -->
-     <!-- Display Address and Delivery Date -->
         <p><strong>Delivery Address:</strong>
             <textarea id="address" disabled><?php echo $order['delivery_address']; ?></textarea>
         </p>
 
         <?php if ($order['status'] != 'Shipped') : ?>
-            <!-- Edit Button and Save Button (Initially Hidden) -->
+            
             <button onclick="enableEdit()">Edit Delivery Details</button>
             <button id="save-btn" onclick="saveDetails()" style="display: none;">Save</button>
         <?php endif; ?>

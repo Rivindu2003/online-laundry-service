@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 
                 reviewsDiv.insertAdjacentHTML('beforeend', data);
 
-                
                 const newLastReviewId = document.querySelector('#loadMoreBtn').getAttribute('data-last-id');
                 loadMoreBtn.setAttribute('data-last-id', newLastReviewId);
             })

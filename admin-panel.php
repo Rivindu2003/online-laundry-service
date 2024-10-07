@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php $IPATH = "global-assets/"; include($IPATH."administrator-sidebar.html"); ?>
 
         <div class="dashboard-container">
-        <!-- User Stats Section -->
+      
         <section class="user-stats">
             <h2>User Statistics</h2>
             <div class="stats">
@@ -103,14 +103,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <p><?php echo $total_managers; ?></p>
                 </div>
             </div>
-            <!-- Buttons to Add/Manage Users -->
+            
             <div class="user-buttons">
                 <a href="account/admin/add-user.php" class="btn">Add New User</a>
                 <a href="account/admin/manage-users.php" class="btn">Manage Users</a>
             </div>
         </section>
 
-        <!-- Recent Orders Section -->
+        
         <section class="recent-orders">
             <h2>Recent Orders</h2>
             <table>
@@ -199,9 +199,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
     </div>
 
-   
-            
-  <!-- Add this before the closing </body> tag -->
 <script>
 
 function openModal(request) {
@@ -235,7 +232,6 @@ function openModal(request) {
     }
 </script>
 
-<!-- Popup Structure -->
 <div id="userPopup" class="popup" style="display: none;">
     <div class="popup-content">
         <span class="close" onclick="hidePopup()">&times;</span>

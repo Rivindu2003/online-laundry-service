@@ -18,22 +18,16 @@
 
 ?>
 
-<!--doctype html-->
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Testimonial HTML</title>
-    <!--Stylesheet-->
     <link rel="stylesheet" href="styles/body.css"/>
-    <!--Fav-icon-->
     <link rel="shortcut icon" href="images/fav-icon.png"/>
-    <!--Poppins Font-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap" rel="stylesheet">
-    <!--Font Awesome-->
     <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
-    <!-- SweetAlert -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     
@@ -45,7 +39,6 @@
     <link rel="stylesheet" href="../css/home-footer-header.css">
 </head>
 <body>
-    <!--Testimonials Section-->
     <?php $IPATH = "../global-assets/"; include($IPATH."header-home.html"); ?>
 
     <section id="testimonials">

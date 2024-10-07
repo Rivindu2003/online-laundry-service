@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $last_name = $_POST['last_name'];
     $username = $_POST['username'];
     $email = $_POST['email'];
+    $phone = $_POST['phone'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
     
@@ -26,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errorMessage_username = "This username is already taken. Please try another.";
     } else {
         
-        $sql = "INSERT INTO users (first_name, last_name, username, password, email) VALUES ('$first_name','$last_name','$username', '$password', '$email')";
+        $sql = "INSERT INTO users (first_name, last_name, username, password, email, phone_number) VALUES ('$first_name','$last_name','$username', '$password', '$email', '$phone')";
         
         if (mysqli_query($connection, $sql)) {
             
@@ -59,6 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="text" name="last_name" placeholder="Last Name" required>
         <input type="text" name="username" placeholder="Username" required>
         <input type="email" name="email" placeholder="Email" required>
+        <input type="phone" name="phone" placeholder="Phone Number" required>
         
         <div class="pass-field">
             <input type="password" name="password" id="password" placeholder="Password" required>
@@ -68,7 +70,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <button type="submit">Sign Up</button>
     </form>
 
-    <!-- Conditions List -->
     <div class="content">
         <p>Password must contain:</p>
         <ul id="password-conditions" class="requirement-list">
