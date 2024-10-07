@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $connection->close();
 }
 ?>
-<!-- HTML Form -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

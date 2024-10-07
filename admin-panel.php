@@ -23,12 +23,11 @@ $total_managers = $manager_data['total_managers'];
 $recent_orders_query = "SELECT order_id, total_amount, order_date, status FROM orders ORDER BY order_date DESC LIMIT 5";
 $recent_orders_result = mysqli_query($connection, $recent_orders_query);
 
-$sql = "SELECT ticket_id, customer_name, subject, submission_date, status FROM support_admin";
+$sql = "SELECT ticket_id, customer_name, subject, submission_date, customer_phone_number, status, message FROM support_admin";
     $stmt = $connection->prepare($sql);
     $stmt->execute();
-    $stmt->bind_result($ticket_id, $customer_name, $subject, $submission_date, $status);
+    $stmt->bind_result($ticket_id, $customer_name, $subject, $submission_date,$customer_phone, $status, $message, );
 
-    
     $support_requests = [];
     while ($stmt->fetch()) {
         $support_requests[] = [
@@ -36,7 +35,9 @@ $sql = "SELECT ticket_id, customer_name, subject, submission_date, status FROM s
             'customer_name' => $customer_name,
             'subject' => $subject,
             'submission_date' => $submission_date,
-            'status' => $status
+            'customer_phone_number' => $customer_phone,
+            'status' => $status,
+            'message' => $message
         ];
     }
     $stmt->close();
@@ -175,6 +176,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <p><strong>Request ID:</strong> <?php echo htmlspecialchars($request['ticket_id']); ?></p>
                             <p><strong>Name:</strong> <span id="modal-customer-name"></span></p>
                             <p><strong>Subject:</strong> <span id="modal-subject"></span></p>
+                            <p><strong>Contact Number:</strong> <?php echo htmlspecialchars($request['customer_phone_number']); ?></p>
+                            <p><strong>Message:</strong> <span id="modal-message"></span></p>
                             <p><strong>Submission Date:</strong> <span id="modal-submission-date"></span></p>
                             <form id="status-form" action="" method="POST">
                             <input type="hidden" id="modal-ticket-id" name="ticket_id">
@@ -206,6 +209,7 @@ function openModal(request) {
             document.getElementById("modal-customer-name").innerText = request.customer_name;
             document.getElementById("modal-subject").innerText = request.subject;
             document.getElementById("modal-submission-date").innerText = request.submission_date;
+            document.getElementById("modal-message").innerText = request.message;
             document.getElementById("myModal").style.display = "block";
         }
 
