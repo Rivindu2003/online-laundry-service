@@ -1,0 +1,135 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, #4dd0e1, #b2fbd1);
+}
+
+.content {
+    padding-top: 20px;
+}
+
+
+.signup-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+.signup-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333333;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+
+.signup-container input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.signup-container input:focus {
+    border-color: #007BFF;
+}
+
+
+.signup-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.signup-container button:hover {
+    background-color: #0056b3;
+}
+
+
+@media (max-width: 768px) {
+    .signup-container {
+        padding: 20px;
+    }
+}
+
+#password-conditions {
+    list-style-type: none; 
+    padding: 0; 
+}
+
+.condition {
+    margin: 5px 0; 
+}
+
+.signup-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.pass-field {
+    position: relative;
+}
+
+.pass-field input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.pass-field i {
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    cursor: pointer;
+}
+
+.requirement-list {
+    list-style-type: none; 
+    padding: 0; 
+}
+
+.requirement-list li {
+    margin: 5px 0; 
+}
+
+.requirement-list li.valid {
+    color: green; 
+}
+
+.requirement-list li i {
+    margin-right: 5px; 
+    color: red; 
+}
+
+.requirement-list li.valid i {
+    color: green; 
+}
+

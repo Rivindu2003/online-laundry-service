@@ -1,0 +1,77 @@
+.order-container {
+    width: 50%;
+    margin: 0;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+p {
+    font-size: 16px;
+    color: #555;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table th {
+    background-color: #f8f8f8;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+textarea, input[type="datetime-local"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    resize: none;
+}
+
+textarea[disabled], input[disabled] {
+    background-color: #f8f8f8;
+    color: #999;
+}
+
+button#save-btn {
+    background-color: #007bff;
+}
+
+button#save-btn:hover {
+    background-color: #0056b3;
+}
+
+#cancel-btn {
+    background-color: red;
+}

@@ -1,0 +1,25 @@
+body {
+    position: relative; 
+}
+
+.sidebar {
+    position: absolute; 
+    left: 0; 
+    width: 250px; 
+    
+}
+
+.container {
+    margin-left: 260px; 
+    padding: 20px; 
+}
+
+.order-section {
+    margin-left: 300px;
+    padding-left:  30px;
+}
+
+.order-container {
+    margin-left: 500px;
+    padding-left:  30px;
+}
