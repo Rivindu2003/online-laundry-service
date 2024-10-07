@@ -35,6 +35,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <div class="login-container">
+        <div class="image-container">
+        <img src="../images/logo-black.png" alt="Logo" class="logo">
+        </div>
         <h2>Customer Login</h2>
         <form method="POST" action="">
             <input type="text" name="username" placeholder="Username" required>
@@ -55,7 +58,7 @@ if ($successMessage) {
                     icon: 'success',
                     button: 'OK',
                 }).then(() => {
-                    window.location.href = '../account/user-panel/user-panel.php'; // Redirect after alert
+                    window.location.href = '../account/user-panel/user-panel.php'; 
                 });
             };
           </script>";
@@ -68,7 +71,7 @@ if ($successMessage) {
                     icon: 'error',
                     button: 'OK',
                 }).then(() => {
-                    window.location.href = 'login.php'; // Redirect after alert
+                    window.location.href = 'login.php'; 
                 });
             };
           </script>";

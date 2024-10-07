@@ -20,7 +20,6 @@ if (isset($data['first_name'], $data['last_name'], $data['email'], $data['phone'
     $stmt = $connection->prepare($update_query);
     $stmt->bind_param("sssssi", $first_name, $last_name, $email, $phone, $address, $_SESSION['user_id']);
     
-    // Execute and check for success
     $success = $stmt->execute();
     
     if ($success) {

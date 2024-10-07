@@ -14,7 +14,7 @@ $user_result = $connection->query($user_query);
 $user_data = $user_result->fetch_assoc();
 $total_users = $user_data['total_users'];
 
-// Get total shop managers
+
 $manager_query = "SELECT COUNT(*) AS total_managers FROM shop_managers";
 $manager_result = $connection->query($manager_query);
 $manager_data = $manager_result->fetch_assoc();
@@ -22,6 +22,59 @@ $total_managers = $manager_data['total_managers'];
 
 $recent_orders_query = "SELECT order_id, total_amount, order_date, status FROM orders ORDER BY order_date DESC LIMIT 5";
 $recent_orders_result = mysqli_query($connection, $recent_orders_query);
+
+$sql = "SELECT ticket_id, customer_name, subject, submission_date, status FROM support_admin";
+    $stmt = $connection->prepare($sql);
+    $stmt->execute();
+    $stmt->bind_result($ticket_id, $customer_name, $subject, $submission_date, $status);
+
+    
+    $support_requests = [];
+    while ($stmt->fetch()) {
+        $support_requests[] = [
+            'ticket_id' => $ticket_id,
+            'customer_name' => $customer_name,
+            'subject' => $subject,
+            'submission_date' => $submission_date,
+            'status' => $status
+        ];
+    }
+    $stmt->close();
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    
+    $ticket_id = $_POST['ticket_id'];
+    $new_status = $_POST['status'];
+
+    try {
+        
+        $sql = "UPDATE support_admin SET status = ? WHERE ticket_id = ?";
+        $stmt = $connection->prepare($sql);
+        
+        
+        $stmt->bind_param("si", $new_status, $ticket_id);
+        
+        
+        if ($stmt->execute()) {
+            
+            header('Location: admin-panel.php');
+            exit;
+        } else {
+            
+            echo json_encode(['success' => false, 'error' => 'Failed to update status.']);
+        }
+
+        
+        $stmt->close();
+    } catch (mysqli_sql_exception $e) {
+        
+        echo json_encode(['success' => false, 'error' => $e->getMessage()]);
+    }
+
+    
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -81,15 +134,102 @@ $recent_orders_result = mysqli_query($connection, $recent_orders_query);
                 </tbody>
             </table>
         </section>
+
+        <div class="support-request">
+            <h2 style="margin-left: 300px;">Active Support Requests</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Request ID</th>
+                            <th>Name</th>
+                            <th>Subject</th>
+                            <th>Submission Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if (count($support_requests) > 0): ?>
+                            <?php foreach ($support_requests as $request): ?>
+                                <tr>
+                                    <td><?php echo htmlspecialchars($request['ticket_id']); ?></td>
+                                    <td><?php echo htmlspecialchars($request['customer_name']); ?></td>
+                                    <td><?php echo htmlspecialchars($request['subject']); ?></td>
+                                    <td><?php echo htmlspecialchars($request['submission_date']); ?></td>
+                                    <td><?php echo htmlspecialchars($request['status']); ?></td>
+                                    <td><span id="support-action" class="request-btn" onclick="openModal(<?php echo htmlspecialchars(json_encode($request)); ?>)">Attend</span></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="3">No support requests found</td>
+                            </tr>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <h2>Case Details</h2>
+                        <div id="modal-body">
+                            <p><strong>Request ID:</strong> <?php echo htmlspecialchars($request['ticket_id']); ?></p>
+                            <p><strong>Name:</strong> <span id="modal-customer-name"></span></p>
+                            <p><strong>Subject:</strong> <span id="modal-subject"></span></p>
+                            <p><strong>Submission Date:</strong> <span id="modal-submission-date"></span></p>
+                            <form id="status-form" action="" method="POST">
+                            <input type="hidden" id="modal-ticket-id" name="ticket_id">
+                                <div class="form-group">
+                                    <label for="status">Change Status:</label>
+                                    <select id="status" name="status">
+                                        <option value="Open">Open</option>
+                                        <option value="In Progress">In Progress</option>
+                                        <option value="Resolved">Resolved</option>
+                                        <option value="Closed">Closed</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit">Update Status</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
     </div>
+
+   
+            
   <!-- Add this before the closing </body> tag -->
 <script>
-    // Function to show the popup
+
+function openModal(request) {
+            document.getElementById("modal-ticket-id").value = request.ticket_id;
+            document.getElementById("modal-customer-name").innerText = request.customer_name;
+            document.getElementById("modal-subject").innerText = request.subject;
+            document.getElementById("modal-submission-date").innerText = request.submission_date;
+            document.getElementById("myModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        
+        window.onclick = function(event) {
+            const modal = document.getElementById("myModal");
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+    
     function showPopup() {
         document.getElementById('userPopup').style.display = 'block';
     }
 
-    // Function to hide the popup
+    
     function hidePopup() {
         document.getElementById('userPopup').style.display = 'none';
     }
@@ -106,10 +246,10 @@ $recent_orders_result = mysqli_query($connection, $recent_orders_query);
 </div>
 
 <script>
-    // Add event listener to the Manage Users button
+    
     document.querySelector('.user-buttons .btn:nth-child(2)').addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent default link behavior
-        showPopup(); // Show the popup
+        event.preventDefault(); 
+        showPopup(); 
     });
 </script>
 </body>

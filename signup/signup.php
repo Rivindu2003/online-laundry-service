@@ -1,5 +1,5 @@
 <?php
-// Database connection
+
 include '../global-assets/db.php'; 
 
 $successMessage = ""; 
@@ -13,26 +13,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-    // Check if email - username already exists
+    
     $checkEmail = "SELECT * FROM users WHERE email = '$email'";
     $checUsername = "SELECT * FROM users WHERE username = '$username'";
     $result_email = mysqli_query($connection, $checkEmail);
     $result_username = mysqli_query($connection, $checUsername);
 
     if (mysqli_num_rows($result_email) > 0) {
-        // Email already taken
+        
         $errorMessage_email = "This email is already taken. Please try another.";
     } elseif(mysqli_num_rows($result_username) > 0){
         $errorMessage_username = "This username is already taken. Please try another.";
     } else {
-        // Prepare the insert statement
+        
         $sql = "INSERT INTO users (first_name, last_name, username, password, email) VALUES ('$first_name','$last_name','$username', '$password', '$email')";
         
         if (mysqli_query($connection, $sql)) {
-            // Set success message
+            
             $successMessage = "Signup successful!";
         } else {
-            // Error handling for insert failure
+            
             $errorMessage = "Error: " . mysqli_error($connection);
         }
     }
@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <?php
 if ($successMessage) {
-    // Use echo to add the script after the body has loaded
+    
     echo "<script>
             window.onload = function() {
                 swal({
@@ -93,7 +93,7 @@ if ($successMessage) {
                     icon: 'success',
                     button: 'OK',
                 }).then(() => {
-                    window.location.href = '../login/login.php'; // Redirect after alert
+                    window.location.href = '../login/login.php'; 
                 });
             };
           </script>";
@@ -106,7 +106,7 @@ if ($successMessage) {
                     icon: 'error',
                     button: 'OK',
                 }).then(() => {
-                    window.location.href = 'signup.php'; // Redirect after alert
+                    window.location.href = 'signup.php'; 
                 });
             };
           </script>";
@@ -121,7 +121,7 @@ elseif ($errorMessage_username){
                     icon: 'error',
                     button: 'OK',
                 }).then(() => {
-                    window.location.href = 'signup.php'; // Redirect after alert
+                    window.location.href = 'signup.php'; 
                 });
             };
           </script>";

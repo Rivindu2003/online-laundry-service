@@ -1,7 +1,7 @@
 <?php 
     session_start();
 
-    // Fetch reviews
+    
     include '../global-assets/db.php';
 
     $sql = "SELECT review_id, user_name, review, review_date FROM reviews ORDER BY review_date DESC";
@@ -38,7 +38,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     
     <script>
-        // Check if the user is logged in via PHP session
+        
         const loggedIn = <?php echo isset($_SESSION['username']) ? 'true' : 'false'; ?>;
         const currentUserId = <?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 'null'; ?>;
     </script>
@@ -54,7 +54,7 @@
         </div>
         <div class="testimonial-box-container" id="review-container">
         <?php 
-        // Check if there are reviews to display
+        
         if (!empty($reviews)) {
             foreach ($reviews as $review) { 
         ?>
@@ -77,7 +77,7 @@
         <?php 
             } 
         } else {
-            echo "<p>No reviews available.</p>"; // Message if no reviews are found
+            echo "<p>No reviews available.</p>"; 
         }
         ?>
         </div>
@@ -87,10 +87,10 @@
     <?php $IPATH = "../global-assets/"; include($IPATH."footer-home.html"); ?>
 
     <script>
-        // Event listener for the Write Your Review button
+        
         document.getElementById('writeReviewBtn').addEventListener('click', () => {
             if (loggedIn) {
-                window.location.href = 'write_review.php'; // Redirect to the review writing page
+                window.location.href = 'write_review.php'; 
             } else {
                 swal({
                     title: "Error!",
@@ -99,12 +99,12 @@
                     confirmButtonText: "Login",
                     closeOnConfirm: false
                 }, function() {
-                    window.location.href = '../login/login.php'; // Redirect to login page
+                    window.location.href = '../login/login.php'; 
                 });
             }
         });
 
-        // Fetch reviews on page load
+        
         document.addEventListener('DOMContentLoaded', fetchReviews);
     </script>
 </body>

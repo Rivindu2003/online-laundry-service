@@ -1,14 +1,14 @@
-/* Import Poppins font from Google Fonts */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-/* Set Poppins as the default font for the entire page */
+
 body {
     font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
 
-/* General Sidebar Styles */
+
 aside.sidebar {
     width: 250px;
     height: 100vh;
@@ -21,7 +21,7 @@ aside.sidebar {
     left: 0;
 }
 
-/* User Info Section */
+
 .user-info {
     text-align: center;
     margin-bottom: 30px;
@@ -55,7 +55,7 @@ aside.sidebar {
     background-color: #00133d;
 }
 
-/* Navigation Menu */
+
 nav ul {
     list-style-type: none;
     padding: 0;
@@ -84,7 +84,7 @@ nav ul li a:active {
     background-color: #16A085;
 }
 
-/* Logout Button Highlight */
+
 nav ul li:last-child a {
     background-color: #E74C3C;
 }

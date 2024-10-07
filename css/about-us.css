@@ -44,7 +44,7 @@ main {
 }
 
 button {
-    background-color: #007BFF; /* Modern blue color */
+    background-color: #007BFF; 
     color: white;
     border: none;
     padding: 15px 20px;
@@ -73,5 +73,5 @@ button:active {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 40px 0; /* Add some spacing */
+    margin: 40px 0; 
 }

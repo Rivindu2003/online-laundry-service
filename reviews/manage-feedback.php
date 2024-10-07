@@ -1,15 +1,15 @@
 <?php
 session_start();
-include '../global-assets/db.php'; // Include your database connection file
+include '../global-assets/db.php'; 
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: ../login/login.php"); // Redirect to login if not logged in
+    header("Location: ../login/login.php"); 
     exit();
 }
 
 $user_id = $_SESSION['user_id'];
 
-// Fetch feedbacks for the current logged-in user
+
 $sql = "SELECT * FROM reviews WHERE user_id = ?";
 $stmt = $connection->prepare($sql);
 $stmt->bind_param("i", $user_id);
@@ -24,7 +24,7 @@ $feedbacks = $result->fetch_all(MYSQLI_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Your Feedbacks</title>
-    <link rel="stylesheet" href="styles/manage-feedbacks.css"> <!-- Link to CSS file -->
+    <link rel="stylesheet" href="styles/manage-feedbacks.css"> 
     <link rel="stylesheet" href="../css/header-footer-sidebar.css">
     <link rel="stylesheet" href="../css/position.css">
 </head>
@@ -61,6 +61,6 @@ $feedbacks = $result->fetch_all(MYSQLI_ASSOC);
         </table>
     </div>
     <?php $IPATH = "../global-assets/"; include($IPATH."footer.html"); ?>
-    <script src="js/manage-feedbacks.js"></script> <!-- Link to JavaScript file -->
+    <script src="js/manage-feedbacks.js"></script> 
 </body>
 </html>

@@ -30,11 +30,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="../css/login.css"> 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="../css/login-shop.css"> 
+    <script src="../sweetalert/docs/assets/sweetalert/sweetalert.min.js"></script>
 </head>
 <body>
     <div class="login-container">
+        <div class="image-container">
+            <img src="../images/logo-black.png" alt="Logo" class="logo">
+        </div>
         <h2>Shop Manager Login</h2>
         <form method="POST" action="">
             <input type="text" name="username" placeholder="Username" required>
@@ -48,26 +51,26 @@ if ($successMessage) {
     
     echo "<script>
             window.onload = function() {
-                swal.fire({
+                swal({
                     title: 'Success!',
                     text: '$successMessage',
                     icon: 'success',
                     button: 'OK',
                 }).then(() => {
-                    window.location.href = '../shop-manager.php'; // Redirect after alert
+                    window.location.href = '../shop-manager.php'; 
                 });
             };
           </script>";
 }else if ($failedMessage){
     echo "<script>
             window.onload = function() {
-                swal.fire({
+                swal({
                     title: 'Oops..!',
                     text: '$failedMessage',
                     icon: 'error',
                     button: 'OK',
                 }).then(() => {
-                    window.location.href = 'login.php'; // Redirect after alert
+                    window.location.href = 'login.php'; 
                 });
             };
           </script>";

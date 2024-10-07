@@ -11,10 +11,8 @@ if (!isset($_SESSION['shop_manager_id'])) {
 $message_done = '';
 $message_failed = '';
 
-// Get the service_id from the URL
 $serviceId = isset($_GET['service_id']) ? (int)$_GET['service_id'] : 0;
 
-// Handle delete request
 if (isset($_POST['delete_service_id'])) {
     $deleteId = $_POST['delete_service_id'];
     $deleteStmt = $connection->prepare("DELETE FROM services WHERE service_id = ?");
@@ -29,12 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_service_id']))
     $description = $_POST['description'];
     $price = $_POST['servicePrice'];
 
-    // Prepare and bind the update SQL statement
-    $updateStmt = $connection->prepare("UPDATE services SET service_name = ?, description = ?, price = ? WHERE service_id = ?");
+        $updateStmt = $connection->prepare("UPDATE services SET service_name = ?, description = ?, price = ? WHERE service_id = ?");
     $updateStmt->bind_param("ssdi", $serviceName, $description, $price, $updateId);
 
-    // Execute the query and handle success/failure
-    if ($updateStmt->execute()) {
+        if ($updateStmt->execute()) {
         $message_done = "Service edit successful";
     } else {
         $message_failed = "Service edit failed";
@@ -43,13 +39,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_service_id']))
     $updateStmt->close();
 }
 
-// Fetch specific service if service_id is provided
 $stmt = $connection->prepare("SELECT service_id, service_name, description, price FROM services WHERE service_id = ?");
 $stmt->bind_param("i", $serviceId);
 $stmt->execute();
 $result = $stmt->get_result();
-$service = $result->fetch_assoc(); // Fetch only one service
-$stmt->close();
+$service = $result->fetch_assoc(); $stmt->close();
 $connection->close();
 ?>
 
@@ -124,8 +118,7 @@ $connection->close();
             })
             .then((willDelete) => {
                 if (willDelete) {
-                    // If user confirms, submit the form
-                    document.getElementById('delete-form-' + serviceId).submit();
+                                        document.getElementById('delete-form-' + serviceId).submit();
                 } else {
                     swal("Your service is safe!");
                 }

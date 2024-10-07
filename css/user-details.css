@@ -1,85 +1,85 @@
 .container {
-    max-width: auto; /* Maximum width of the container */
-    margin: 20px auto; /* Center align the container */
-    padding: 20px; /* Padding around the container */
-    background-color: #ffffff; /* White background for the container */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    max-width: auto; 
+    margin: 20px auto; 
+    padding: 20px; 
+    background-color: #ffffff; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
 }
 
 .profile {
-    text-align: center; /* Center-align text and image */
-    margin-bottom: 30px; /* Space below the profile section */
+    text-align: center; 
+    margin-bottom: 30px; 
 }
 
 .profile img {
-    width: 100px; /* Set width of the avatar */
-    height: 100px; /* Set height of the avatar */
-    object-fit: cover; /* Cover the image within the avatar area */
-    margin-bottom: 15px; /* Space below the image */
+    width: 100px; 
+    height: 100px; 
+    object-fit: cover; 
+    margin-bottom: 15px; 
 }
 
 .profile h2 {
-    font-size: 24px; /* Font size for the username */
-    color: #121212; /* Dark color for username */
-    margin-bottom: 5px; /* Space below the username */
+    font-size: 24px; 
+    color: #121212; 
+    margin-bottom: 5px; 
 }
 
 .profile p {
-    font-size: 16px; /* Font size for welcome and contact text */
-    color: #666; /* Gray color for text */
+    font-size: 16px; 
+    color: #666; 
 }
 
 .details {
-    border-top: 1px solid #e0e0e0; /* Top border for details section */
-    padding-top: 20px; /* Padding above the details section */
+    border-top: 1px solid #e0e0e0; 
+    padding-top: 20px; 
 }
 
 .detail-item {
-    margin-bottom: 20px; /* Space below each detail item */
+    margin-bottom: 20px; 
 }
 
 .detail-item label {
-    font-weight: bold; /* Bold font for labels */
-    display: block; /* Block display for labels */
-    margin-bottom: 5px; /* Space below the label */
+    font-weight: bold; 
+    display: block; 
+    margin-bottom: 5px; 
 }
 
 .editable-text {
-    font-size: 16px; /* Font size for editable text */
-    color: #333; /* Dark color for editable text */
-    margin: 5px 0; /* Space above and below the editable text */
+    font-size: 16px; 
+    color: #333; 
+    margin: 5px 0; 
 }
 
 .editable-input {
-    width: 100%; /* Full width for input fields */
-    padding: 8px; /* Padding inside input fields */
-    border: 1px solid #ccc; /* Light border for input fields */
-    border-radius: 4px; /* Rounded corners for input fields */
-    font-size: 16px; /* Font size for input fields */
-    display: none; /* Hide input fields initially */
+    width: 100%; 
+    padding: 8px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    font-size: 16px; 
+    display: none; 
 }
 
 button {
-    background-color: #004B90; /* Button background color */
-    color: white; /* Button text color */
-    border: none; /* Remove border */
-    border-radius: 4px; /* Rounded corners for buttons */
-    padding: 10px 15px; /* Padding inside buttons */
-    cursor: pointer; /* Pointer cursor on hover */
-    font-size: 16px; /* Font size for buttons */
-    transition: background-color 0.3s; /* Transition for hover effect */
-    margin-right: 10px; /* Space between buttons */
+    background-color: #004B90; 
+    color: white; 
+    border: none; 
+    border-radius: 4px; 
+    padding: 10px 15px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    transition: background-color 0.3s; 
+    margin-right: 10px; 
 }
 
 button:hover {
-    background-color: #003066; /* Darker shade on hover */
+    background-color: #003066; 
 }
 
 #delete-btn {
-    background-color: #e74c3c; /* Red background for delete button */
+    background-color: #e74c3c; 
 }
 
 #delete-btn:hover {
-    background-color: #c0392b; /* Darker red on hover */
+    background-color: #c0392b; 
 }

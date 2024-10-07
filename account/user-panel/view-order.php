@@ -9,10 +9,10 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// Fetch user details from the users table
+
 $userQuery = $connection->prepare("SELECT first_name, last_name, phone_number FROM users WHERE id = ?");
 if ($userQuery === false) {
-    die("Error preparing statement: " . $connection->error); // This will print the MySQL error
+    die("Error preparing statement: " . $connection->error); 
 }
 
 $userQuery->bind_param("i", $user_id);
@@ -20,15 +20,15 @@ $userQuery->execute();
 $userResult = $userQuery->get_result();
 $user = $userResult->fetch_assoc();
 
-// Fetch the order details from the orders table
-$order_id = $_GET['order_id']; // Assume you are passing order ID in the URL
+
+$order_id = $_GET['order_id']; 
 $orderQuery = $connection->prepare("SELECT * FROM orders WHERE order_id = ? AND customer_id = ?");
 $orderQuery->bind_param("ii", $order_id, $user_id);
 $orderQuery->execute();
 $orderResult = $orderQuery->get_result();
 $order = $orderResult->fetch_assoc();
 
-// Fetch service details from service_orders and services tables
+
 $serviceQuery = $connection->prepare("SELECT so.service_id, s.service_name, so.status, so.service_date, s.price
                                       FROM service_orders so 
                                       JOIN services s ON so.service_id = s.service_id
@@ -37,7 +37,7 @@ $serviceQuery->bind_param("i", $order_id);
 $serviceQuery->execute();
 $serviceResult = $serviceQuery->get_result();
 
-// Calculate total price
+
 $totalPrice = 0;
 
 ?>
@@ -54,18 +54,18 @@ $totalPrice = 0;
     <script src="../../sweetalert/docs/assets/sweetalert/sweetalert.min.js"></script>
     <script>
 
-        // Function to toggle edit fields for delivery date and address
-        // Function to enable editing of the delivery address
+        
+        
             function enableEdit() {
                 document.getElementById('address').disabled = false;
                 document.getElementById('save-btn').style.display = 'inline-block';
             }
 
-// Function to handle save and AJAX submission
+
         function saveDetails() {
             let address = document.getElementById('address').value;
 
-            // Perform an AJAX call to save the updated delivery details
+            
             fetch('update-user-from-view.php', {
                 method: 'POST',
                 headers: {
@@ -80,9 +80,9 @@ $totalPrice = 0;
             .then(data => {
                 if (data.success) {
                     alert('Details updated successfully!');
-                    location.reload(); // Reload to reflect changes
+                    location.reload(); 
                 } else {
-                    alert('Error updating details: ' + data.message); // Show error message
+                    alert('Error updating details: ' + data.message); 
                 }
             })
             .catch(error => console.error('Error:', error));
@@ -111,7 +111,7 @@ $totalPrice = 0;
         }
     }).then((willDelete) => {
         if (willDelete) {
-            // Make an AJAX call to cancel the order
+            
             fetch('delete_order_customer.php', {
                 method: 'POST',
                 headers: {
@@ -126,7 +126,7 @@ $totalPrice = 0;
                 if (data.success) {
                     swal("Canceled!", "Your order has been canceled.", "success")
                     .then(() => {
-                        // Redirect to the user panel after cancellation
+                        
                         window.location.href = 'user-panel.php';
                     });
                 } else {

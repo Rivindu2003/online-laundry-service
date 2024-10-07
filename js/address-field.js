@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
         const accountTypeSelect = document.getElementById('account_type');
         const addressField = document.getElementById('address-field');
-        const addressLabel = addressField.previousElementSibling; // To hide the label as well
+        const addressLabel = addressField.previousElementSibling; 
         
-        // Function to toggle the visibility of the address field
+        
         function toggleAddressField() {
             if (accountTypeSelect.value === 'shop_manager') {
                 addressField.style.display = 'none';
@@ -16,10 +16,10 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
         
-        // Initially call the function to set the correct visibility
+        
         toggleAddressField();
         
-        // Add event listener to the dropdown
+        
         accountTypeSelect.addEventListener('change', toggleAddressField);
 });
 

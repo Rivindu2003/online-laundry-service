@@ -1,4 +1,4 @@
-/* General Styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -18,7 +18,7 @@ body {
     padding-top: 20px;
 }
 
-/* Signup Form Styles */
+
 .signup-container {
     background-color: #ffffff;
     padding: 40px;
@@ -36,7 +36,7 @@ body {
     font-weight: 600;
 }
 
-/* Input Styles */
+
 .signup-container input {
     width: 100%;
     padding: 12px;
@@ -52,7 +52,7 @@ body {
     border-color: #007BFF;
 }
 
-/* Button Styles */
+
 .signup-container button {
     width: 100%;
     padding: 12px;
@@ -69,7 +69,7 @@ body {
     background-color: #0056b3;
 }
 
-/* Responsive Media Query */
+
 @media (max-width: 768px) {
     .signup-container {
         padding: 20px;
@@ -112,24 +112,24 @@ body {
 }
 
 .requirement-list {
-    list-style-type: none; /* Remove bullets */
-    padding: 0; /* Remove default padding */
+    list-style-type: none; 
+    padding: 0; 
 }
 
 .requirement-list li {
-    margin: 5px 0; /* Add some space between conditions */
+    margin: 5px 0; 
 }
 
 .requirement-list li.valid {
-    color: green; /* Green color for valid requirements */
+    color: green; 
 }
 
 .requirement-list li i {
-    margin-right: 5px; /* Space between icon and text */
-    color: red; /* Default red for icons */
+    margin-right: 5px; 
+    color: red; 
 }
 
 .requirement-list li.valid i {
-    color: green; /* Change icon color to green when valid */
+    color: green; 
 }
 

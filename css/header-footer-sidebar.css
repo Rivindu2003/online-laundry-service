@@ -63,7 +63,7 @@ body {
     height: auto; 
     margin-right: 10px; 
     vertical-align: middle; 
-    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(200deg); /* Change color */
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(200deg); 
 }
 
 .footerContainer {
@@ -116,54 +116,54 @@ body {
 }
 
 .sidebar {
-    width: 300px; /* Set width of the sidebar */
-    background-color: #ffffff; /* Background color of the sidebar */
-    padding: 20px; /* Padding around the content */
-    display: flex; /* Use flexbox for layout */
-    flex-direction: column; /* Stack elements vertically */
-    justify-content: flex-start; /* Align items to the top */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    border-radius: 8px; /* Rounded corners */
+    width: 300px; 
+    background-color: #ffffff; 
+    padding: 20px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 8px; 
 }
 
 #userName_sidebar {
-    font-size: 18px; /* Font size for the username */
-    font-weight: bold; /* Bold text for username */
-    margin-bottom: 5px; /* Space below the username */
+    font-size: 18px; 
+    font-weight: bold; 
+    margin-bottom: 5px; 
 }
 
 #email_sidebar {
-    font-size: 16px; /* Font size for the email */
-    color: #666; /* Darker gray for email */
-    margin-bottom: 15px; /* Space below the email */
+    font-size: 16px; 
+    color: #666; 
+    margin-bottom: 15px; 
 }
 
 nav {
-    width: 100%; /* Make nav full width */
+    width: 100%; 
 }
 
 nav ul {
-    list-style-type: none; /* Remove bullet points */
-    padding: 0; /* Remove padding */
-    margin: 0; /* Remove margin */
+    list-style-type: none; 
+    padding: 0; 
+    margin: 0; 
 }
 
 nav ul li {
-    margin: 10px 0; /* Space between links */
+    margin: 10px 0; 
 }
 
 nav ul li a {
-    color: #121212; /* Text color for links */
-    text-decoration: none; /* Remove underline */
-    display: block; /* Make the link fill the li */
-    padding: 10px; /* Add padding for better click area */
-    border-radius: 4px; /* Rounded corners for links */
-    transition: background-color 0.3s; /* Transition for hover effect */
+    color: #121212; 
+    text-decoration: none; 
+    display: block; 
+    padding: 10px; 
+    border-radius: 4px; 
+    transition: background-color 0.3s; 
 }
 
 nav ul li a:hover {
-    background-color: #e0e0e0; /* Light gray background on hover */
-    color: #004B90; /* Change text color on hover */
+    background-color: #e0e0e0; 
+    color: #004B90; 
 }
 
 @media (max-width: 700px){

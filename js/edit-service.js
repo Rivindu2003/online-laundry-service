@@ -1,15 +1,15 @@
-// script.js
+
 document.querySelectorAll('.edit-btn').forEach(button => {
     button.addEventListener('click', function() {
         const serviceId = this.getAttribute('data-id');
         const serviceItem = document.getElementById(`service-${serviceId}`);
 
-        // Get current service details
+        
         const serviceName = serviceItem.querySelector('.service-name').innerText;
         const serviceDescription = serviceItem.querySelector('.service-description').innerText;
         const servicePrice = serviceItem.querySelector('.service-price').innerText.replace(' USD', '');
 
-        // Replace text with input fields
+        
         serviceItem.innerHTML = `
             <form method="POST" action="">
                 <input type="hidden" name="update_service_id" value="${serviceId}">
@@ -30,9 +30,9 @@ document.querySelectorAll('.edit-btn').forEach(button => {
             </form>
         `;
 
-        // Cancel button functionality
+        
         serviceItem.querySelector('.cancel-btn').addEventListener('click', function() {
-            location.reload(); // Reload the page to restore text
+            location.reload(); 
         });
     });
 });
