@@ -13,7 +13,7 @@
     <section class="home">
         <div class="home-content">
             <h1>Welcome to Bubble Shine</h1>
-            <h3>Your Premier Laundry</h3>
+            <h3>Your Premier Laundry service.</h3>
             <p>Experience the magic of effortless laundry with Bubble Shine! We take the hassle out of washing, drying, and folding, delivering pristine clothes right to your doorstep. Enjoy our express services, eco-friendly practices, and exceptional customer care—all designed to make your life easier and your clothes shine brighter.</p>
             <a href="/home/about-us.php" class="button">
                 <button type="button">Book Now!</button>
