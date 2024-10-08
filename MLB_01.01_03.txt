@@ -1,0 +1,75 @@
+Project Group ID - MLB_01.01_03
+Batch No - IT.WD.Y1S2
+Topic - Online Laundry Service
+Project link - https://mysliit-my.sharepoint.com/:u:/g/personal/it23552210_my_sliit_lk/EcPHdaVTUW5OrW6QlEPwlVYBPPCsOeRYrzo0AnC91TV3Sw?e=kXpBAh
+
+Group Member Details
+
+Member ID - IT23552210
+Member name - R H RATHNAYAKE
+contact no - 0703716999
+email address- it23552210@my.sliit.lk
+
+Implemented Functions
+
+- Home Page / Contact us Page
+- Website Administrator Dashboard
+- Retrieve support request details for shop administrator
+- Create/Manage users with reset password functionality
+- password reset panel for customers
+
+Member ID - IT23533882
+Member name - O I Brandigampala
+contact no - 0711437099
+email address- it23533882@my.sliit.lk
+
+Implemented Functions
+
+- User Panel
+- Create order function
+- Implementing the function to retrieve orders created by relevant user
+- Display and view order summery function implementation 
+- Update/Delete existing order with current logged in user function
+
+Member ID - IT23617032
+Member name - Marasinghe K G
+contact no - 0701211181
+email address- it23617032@my.sliit.lk
+
+Implemented Functions
+
+- Our Reviews Page
+- Fetching Reviews and Display on review page function
+- Create new review function
+- edit/delete review functions
+
+Member ID - IT23550544
+Member name - P D R Boteju
+contact no -  0778232104
+email address- it23550544@my.sliit.lk
+
+Implemented Functions
+
+- Customer login Panel
+- Customer signup window
+- Customer details section
+- Edit/Delete customer details function
+
+Member ID - IT23548350
+Member name - Maleena B A C
+contact no -  0715235025
+email address- it23548350@my.sliit.lk
+
+Implemented Functions
+
+- * functions in Shop Manager Panel
+- Retrieve/attend support requests for shop manager function
+- Create/Update/Delete/View Laundry Services in BubbleShine
+
+
+
+
+
+
+
+
