@@ -22,7 +22,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Testimonial HTML</title>
+    <title>Testimonial</title>
     <link rel="stylesheet" href="styles/body.css"/>
     <link rel="shortcut icon" href="images/fav-icon.png"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">

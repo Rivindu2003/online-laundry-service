@@ -56,7 +56,7 @@ $userInfo = $result->fetch_assoc()
         <?php $result->data_seek(0); ?>
             <?php while ($row = $result->fetch_assoc()): ?>
                 <tr>
-                    <td><?php echo '#0000' .$row['order_id']; ?></td>
+                    <td><?php echo '#BB_000' .$row['order_id']; ?></td>
                     <td><?php echo date('Y-m-d', strtotime($row['order_date'])); ?></td> 
                     <td><?php echo number_format($row['total_amount'], 2); ?> LKR</td> 
                     <td><?php echo $row['status']; ?></td> 

@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
         
         const lastReviewId = this.getAttribute('data-last-id');
         
-        
         fetch('reviews.php?last_review_id=' + lastReviewId)
             .then(response => response.text())
             .then(data => {
