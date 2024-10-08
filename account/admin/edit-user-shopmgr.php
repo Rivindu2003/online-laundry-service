@@ -50,7 +50,7 @@ if (isset($_POST['delete_user'])) {
     $delete_stmt->bind_param("s", $username);
     $delete_stmt->execute();
 
-    header("Location: manage-users.php");
+    header("Location: manage-shop-managers.php");
     exit();
 }
 ?>

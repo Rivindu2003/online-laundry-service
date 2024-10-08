@@ -24,12 +24,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Testimonial</title>
     <link rel="stylesheet" href="styles/body.css"/>
-    <link rel="shortcut icon" href="images/fav-icon.png"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <script src="../sweetalert/docs/assets/sweetalert/sweetalert.min.js"></script>
     
     <script>
         
@@ -82,21 +77,21 @@
     <script>
         
         document.getElementById('writeReviewBtn').addEventListener('click', () => {
-            if (loggedIn) {
-                window.location.href = 'write_review.php'; 
-            } else {
-                swal({
-                    title: "Error!",
-                    text: "Please log in to write a review.",
-                    type: "error",
-                    confirmButtonText: "Login",
-                    closeOnConfirm: false
-                }, function() {
-                    window.location.href = '../login/login.php'; 
-                });
+    if (loggedIn) {
+        window.location.href = 'write_review.php'; 
+    } else {
+        swal({
+            title: "Error!",
+            text: "Please log in to write a review.",
+            icon: "error",
+            button: "Login"
+        }).then((result) => {
+            if (result) {
+                window.location.href = '../login/login.php'; 
             }
         });
-
+    }
+});
         
         document.addEventListener('DOMContentLoaded', fetchReviews);
     </script>

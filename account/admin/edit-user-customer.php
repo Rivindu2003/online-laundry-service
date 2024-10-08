@@ -87,9 +87,10 @@ if (isset($_POST['delete_user'])) {
                 <input type="text" name="phone_number" value="<?php echo htmlspecialchars($user['phone_number'] ?? ''); ?>" required>
             </div>
             <div class="button-group">
-                <button class="manage-btn" onclick="window.location.href='edit-user-customer.php?username=<?php echo urlencode(htmlspecialchars($user['username'])); ?>'">Save Changes ✅</button>
+            <button class="manage-btn" onclick="window.location.href='edit-user-customer.php?username=<?php echo urlencode(htmlspecialchars($user['username'])); ?>'">Save Changes ✅</button>
                 <button type="submit" name="delete_user" onclick="return confirm('Are you sure you want to delete this user?')">Delete User</button>
             </div>
+
         </form>
     </div>
 </body>
