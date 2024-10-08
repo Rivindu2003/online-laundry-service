@@ -17,7 +17,7 @@ if (isset($_GET['username'])) {
         $resetPasswordQuery = "UPDATE shop_managers SET password_hash='$defaultPassword' WHERE username='$username'";
     if (mysqli_query($connection, $resetPasswordQuery)) {
         echo '<h1>Password Reset Successful</h1>';
-        echo '<p>The password for user ' . htmlspecialchars($username) . ' has been reset to the default value. (Bubble@1234) <a href="/account/admin/admin-panel.php">Return</a></p>';
+        echo '<p>The password for user ' . htmlspecialchars($username) . ' has been reset to the default value. (Bubble@1234) <a href="/admin-panel.php">Return</a></p>';
     } else {
         echo '<h1>Error</h1>';
         echo '<p>Could not reset the password. Please try again later.</p>';
