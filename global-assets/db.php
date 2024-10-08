@@ -3,7 +3,7 @@
 
 $host = 'localhost'; 
 $username = 'bubb_rivindu'; 
-$password = 'fJNwC%AtfDA!2mPe'; 
+$password = '2FHyNql#@98xOwt9'; 
 $database = 'bubb_bubbleshine'; 
 
 
