@@ -110,7 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
             <?php if (!empty($emailError)) { echo '<p class="error">' . $emailError . '</p>'; } ?>
-
+            
             
             <label for="phone_number">Phone Number:</label>
             <input type="tel" id="phone_number" name="phone_number" required>

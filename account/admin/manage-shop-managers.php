@@ -8,8 +8,6 @@ if (!isset($_SESSION['ses_admin_id'])) {
     exit;
 }
 
-$filter = isset($_GET['user_type']) ? $_GET['user_type'] : 'all';
-
 $usersQuery = "
     SELECT created_at , first_name, last_name, phone_number, email, username FROM shop_managers";
 
@@ -66,9 +64,9 @@ $result = mysqli_query($connection, $usersQuery);
     </table>
 
     <script>
-        function manageUser(username) {
+        /*function manageUser(username) {
                         alert("Manage user: " + username);
-                                }
+                                }*/
 
         function resetPassword(username) {
         if (confirm('Are you sure you want to reset the password for ' + username + '? This action cannot be undone.')) {

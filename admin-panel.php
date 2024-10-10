@@ -14,7 +14,6 @@ $user_result = $connection->query($user_query);
 $user_data = $user_result->fetch_assoc();
 $total_users = $user_data['total_users'];
 
-
 $manager_query = "SELECT COUNT(*) AS total_managers FROM shop_managers";
 $manager_result = $connection->query($manager_query);
 $manager_data = $manager_result->fetch_assoc();
@@ -40,7 +39,8 @@ $sql = "SELECT ticket_id, customer_name, subject, submission_date, customer_phon
             'message' => $message
         ];
     }
-    $stmt->close();
+
+$stmt->close();
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -73,8 +73,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo json_encode(['success' => false, 'error' => $e->getMessage()]);
     }
 
-    
-    exit;
 }
 ?>
 
@@ -107,11 +105,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             <div class="user-buttons">
                 <a href="account/admin/add-user.php" class="btn">Add New User</a>
-                <a href="account/admin/manage-users.php" class="btn">Manage Users</a>
+                <a href="#" class="btn">Manage Users</a>
             </div>
         </section>
 
-        
         <section class="recent-orders">
             <h2>Recent Orders</h2>
             <table>
@@ -141,12 +138,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <table>
                     <thead>
                         <tr>
+
                             <th>Request ID</th>
                             <th>Name</th>
                             <th>Subject</th>
                             <th>Submission Date</th>
                             <th>Status</th>
                             <th>Actions</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -211,13 +210,13 @@ function openModal(request) {
             document.getElementById("modal-submission-date").innerText = request.submission_date;
             document.getElementById("modal-message").innerText = request.message;
             document.getElementById("myModal").style.display = "block";
-        }
+}
 
         function closeModal() {
             document.getElementById("myModal").style.display = "none";
         }
 
-        
+            // Outside window close 
         window.onclick = function(event) {
             const modal = document.getElementById("myModal");
             if (event.target === modal) {
@@ -225,7 +224,6 @@ function openModal(request) {
             }
         }
 
-    
     function showPopup() {
         document.getElementById('userPopup').style.display = 'block';
     }
@@ -251,6 +249,7 @@ function openModal(request) {
         event.preventDefault(); 
         showPopup(); 
     });
+
 </script>
 </body>
 </html>

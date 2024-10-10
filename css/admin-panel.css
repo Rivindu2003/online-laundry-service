@@ -25,6 +25,7 @@ h2 {
     font-weight: 600;
 }
 
+/* Stat box */
 .user-stats,
 .support-requests,
 .recent-orders {
@@ -35,6 +36,7 @@ h2 {
     border-radius: 12px; 
     transition: box-shadow 0.3s; 
 }
+
 
 .user-stats:hover,
 .support-requests:hover,

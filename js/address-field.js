@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function() {
         const addressField = document.getElementById('address-field');
         const addressLabel = addressField.previousElementSibling; 
         
-        
         function toggleAddressField() {
             if (accountTypeSelect.value === 'shop_manager') {
                 addressField.style.display = 'none';
